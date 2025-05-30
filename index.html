@@ -107,8 +107,87 @@
     .contact {
       padding: 4rem 2rem;
       background: #ffffff;
-      max-width: 800px;
+      max-width: 1200px;
       margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .contact h2 {
+      text-align: center;
+      color: #0077cc;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+    }
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+    .contact-info {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .contact-info:hover {
+      transform: translateY(-5px);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: #0077cc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      color: white;
+    }
+    .contact-text {
+      flex: 1;
+    }
+    .contact-text h3 {
+      margin: 0;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    .contact-text p {
+      margin: 0.5rem 0 0;
+      color: #666;
+    }
+    .map-container {
+      grid-column: 1 / -1;
+      height: 300px;
+      background: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .business-hours {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .business-hours h3 {
+      color: #0077cc;
+      margin-bottom: 1rem;
+    }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom: 1px solid #dee2e6;
     }
     .footer {
       background: #0077cc;
@@ -217,10 +296,70 @@
   <section id="contact" class="contact">
     <h2 class="lang-en">Contact Us</h2>
     <h2 class="lang-zh">联系我们</h2>
-    <p><strong class="lang-en">Phone:</strong><strong class="lang-zh">电话：</strong> 021 463 788</p>
-    <p><strong class="lang-en">Email:</strong><strong class="lang-zh">邮箱：</strong> support@theairtech.co.nz</p>
-    <p><strong class="lang-en">Address:</strong><strong class="lang-zh">地址：</strong> 42 Upper Queen Street, Auckland</p>
-    <p><strong class="lang-en">Working Hours:</strong><strong class="lang-zh">营业时间：</strong> Mon - Sat, 8:00AM - 6:00PM</p>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <h3 class="lang-en">Phone</h3>
+            <h3 class="lang-zh">电话</h3>
+            <p>021 463 788</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text">
+            <h3 class="lang-en">Email</h3>
+            <h3 class="lang-zh">邮箱</h3>
+            <p>support@theairtech.co.nz</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <h3 class="lang-en">Address</h3>
+            <h3 class="lang-zh">地址</h3>
+            <p>42 Upper Queen Street, Auckland</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="business-hours">
+        <h3 class="lang-en">Business Hours</h3>
+        <h3 class="lang-zh">营业时间</h3>
+        <div class="hours-grid">
+          <div class="hours-item">
+            <span class="lang-en">Monday - Friday</span>
+            <span class="lang-zh">周一至周五</span>
+            <span>8:00 AM - 6:00 PM</span>
+          </div>
+          <div class="hours-item">
+            <span class="lang-en">Saturday</span>
+            <span class="lang-zh">周六</span>
+            <span>8:00 AM - 6:00 PM</span>
+          </div>
+          <div class="hours-item">
+            <span class="lang-en">Sunday</span>
+            <span class="lang-zh">周日</span>
+            <span>Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.617516582773!2d174.7633!3d-36.8504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47fb5a9ce6fb%3A0x500ef6143a2d600!2s42%20Upper%20Queen%20St%2C%20Auckland%20CBD%2C%20Auckland%201010!5e0!3m2!1sen!2snz!4v1647881234567!5m2!1sen!2snz" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
