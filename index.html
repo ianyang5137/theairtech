@@ -1,68 +1,123 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE AIRTECH LTD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #f9fafb;
       color: #333;
     }
+
     header {
-      background-color: #1e90ff;
+      background-color: #0077cc;
       color: white;
-      padding: 1rem;
+      padding: 2rem;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+
     nav {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      background: #003e66;
+      padding: 1rem 0;
     }
+
     nav a {
       color: white;
       margin: 0 1rem;
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
     }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
     section {
-      padding: 2rem;
+      padding: 3rem 2rem;
+      max-width: 960px;
+      margin: auto;
     }
+
+    h2 {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 0.5rem 0;
+    }
+
+    .gallery {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .gallery img.active {
+      display: block;
+    }
+
+    .gallery-controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .gallery-controls button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .gallery-controls button:hover {
+      background-color: #005fa3;
+    }
+
     footer {
-      background-color: #1e90ff;
+      background-color: #0077cc;
       color: white;
       text-align: center;
       padding: 1rem;
-      position: relative;
-      bottom: 0;
-      width: 100%;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-    .gallery img {
-      max-width: 45%;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+
     .lang-toggle {
       position: fixed;
       top: 10px;
       right: 10px;
-      background: #1e90ff;
+      background: #0077cc;
       color: white;
       border: none;
       padding: 0.5rem 1rem;
       cursor: pointer;
       border-radius: 4px;
+      z-index: 1000;
     }
   </style>
   <script>
@@ -72,9 +127,29 @@
       en.forEach(e => e.style.display = e.style.display === 'none' ? 'block' : 'none');
       zh.forEach(e => e.style.display = zh[0].style.display === 'none' ? 'block' : 'none');
     }
-    window.onload = function() {
+
+    window.onload = function () {
       document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
+      showImage(0);
     };
+
+    let currentImage = 0;
+    function showImage(index) {
+      const images = document.querySelectorAll('.gallery img');
+      images.forEach((img, i) => img.classList.remove('active'));
+      images[index].classList.add('active');
+      currentImage = index;
+    }
+
+    function prevImage() {
+      const images = document.querySelectorAll('.gallery img');
+      showImage((currentImage - 1 + images.length) % images.length);
+    }
+
+    function nextImage() {
+      const images = document.querySelectorAll('.gallery img');
+      showImage((currentImage + 1) % images.length);
+    }
   </script>
 </head>
 <body>
@@ -122,22 +197,25 @@
       <li>家电维修：冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉、打火灶</li>
     </ul>
   </section>
-  
-<section id="gallery">
-  <h2 class="lang-en">Gallery</h2>
-  <h2 class="lang-zh">现场案例</h2>
-  <div class="gallery">
-    <img src="images/1.jpg" alt="Repair 1" />
-    <img src="images/2.jpg" alt="Repair 2" />
-    <img src="images/3.jpg" alt="Repair 3" />
-    <img src="images/4.jpg" alt="Repair 4" />
-    <img src="images/5.jpg" alt="Repair 5" />
-    <img src="images/6.jpg" alt="Repair 6" />
-    <img src="images/7.jpg" alt="Repair 7" />
-    <img src="images/8.jpg" alt="Repair 8" />
-  </div>
-</section>
 
+  <section id="gallery">
+    <h2 class="lang-en">Gallery</h2>
+    <h2 class="lang-zh">现场案例</h2>
+    <div class="gallery">
+      <img src="images/14d8712f873cd367e04fbfca6ba2495e.jpg" alt="Repair 1" />
+      <img src="images/31d9dfb6a8c6c46165286461f784e909.jpg" alt="Repair 2" />
+      <img src="images/36ac5f4989e9dde2cc9ff6bd4862c44.jpg" alt="Repair 3" />
+      <img src="images/9383fe67e7a6451c6edb266be5a408d.jpg" alt="Repair 4" />
+      <img src="images/b66febede08424c1fa062bed5517687.jpg" alt="Repair 5" />
+      <img src="images/dbd0b2c8393b3b4b4312e78d25ca976.jpg" alt="Repair 6" />
+      <img src="images/e34757376215a6e643c1ce62343287d60.jpg" alt="Repair 7" />
+      <img src="images/ff076cf3ef19351871b75e81c6157439.jpg" alt="Repair 8" />
+    </div>
+    <div class="gallery-controls">
+      <button onclick="prevImage()">Previous</button>
+      <button onclick="nextImage()">Next</button>
+    </div>
+  </section>
 
   <section id="contact">
     <h2 class="lang-en">Contact Us</h2>
