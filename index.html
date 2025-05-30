@@ -118,15 +118,26 @@
     }
   </style>
   <script>
+    let currentLang = 'en';
+
     function toggleLang() {
-      const en = document.querySelectorAll('.lang-en');
-      const zh = document.querySelectorAll('.lang-zh');
-      en.forEach(e => e.style.display = e.style.display === 'none' ? 'block' : 'none');
-      zh.forEach(e => e.style.display = zh[0].style.display === 'none' ? 'block' : 'none');
+      const enElements = document.querySelectorAll('.lang-en');
+      const zhElements = document.querySelectorAll('.lang-zh');
+
+      if (currentLang === 'en') {
+        enElements.forEach(e => e.style.display = 'none');
+        zhElements.forEach(e => e.style.display = 'block');
+        currentLang = 'zh';
+      } else {
+        zhElements.forEach(e => e.style.display = 'none');
+        enElements.forEach(e => e.style.display = 'block');
+        currentLang = 'en';
+      }
     }
 
     window.onload = function () {
       document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
+      document.querySelectorAll('.lang-en').forEach(e => e.style.display = 'block');
       AOS.init({ once: true });
     };
   </script>
