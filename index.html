@@ -3,107 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE AIRTECH LTD</title>
+  <title>THE AIRTECH LTD - Appliance Repair in Auckland</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9fafb;
+      background: #f5f7fa;
       color: #333;
-      scroll-behavior: smooth;
     }
-
     header {
       background: linear-gradient(to right, #0077cc, #00b4db);
-      color: white;
-      padding: 2rem;
+      padding: 4rem 2rem;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: white;
     }
-
+    header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    header p { font-size: 1.2rem; }
     nav {
+      background: #fff;
       display: flex;
       justify-content: center;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
     nav a {
-      color: #0077cc;
-      margin: 1rem;
+      margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff6600;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 960px;
-      margin: auto;
-    }
-
-    h2 {
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid #0077cc;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding: 0.5rem 0;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    ul li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
       color: #0077cc;
     }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background-color: #0077cc;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-    }
-
     .lang-toggle {
       position: fixed;
       top: 10px;
@@ -116,103 +45,186 @@
       border-radius: 4px;
       z-index: 1000;
     }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: #e6f7ff;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .hero button {
+      background: #0077cc;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .services {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .testimonials {
+      background: #f0f4f8;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .testimonials h2 { margin-bottom: 2rem; }
+    .testimonial {
+      max-width: 600px;
+      margin: 1rem auto;
+      font-style: italic;
+    }
+    .contact {
+      padding: 4rem 2rem;
+      background: #ffffff;
+      max-width: 800px;
+      margin: auto;
+    }
+    .footer {
+      background: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
   </style>
   <script>
     let currentLang = 'en';
-
     function toggleLang() {
-      const enElements = document.querySelectorAll('.lang-en');
-      const zhElements = document.querySelectorAll('.lang-zh');
-
+      const en = document.querySelectorAll('.lang-en');
+      const zh = document.querySelectorAll('.lang-zh');
       if (currentLang === 'en') {
-        enElements.forEach(e => e.style.display = 'none');
-        zhElements.forEach(e => e.style.display = 'block');
+        en.forEach(e => e.style.display = 'none');
+        zh.forEach(e => e.style.display = 'block');
         currentLang = 'zh';
       } else {
-        zhElements.forEach(e => e.style.display = 'none');
-        enElements.forEach(e => e.style.display = 'block');
+        zh.forEach(e => e.style.display = 'none');
+        en.forEach(e => e.style.display = 'block');
         currentLang = 'en';
       }
     }
-
     window.onload = function () {
       document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
       document.querySelectorAll('.lang-en').forEach(e => e.style.display = 'block');
-      AOS.init({ once: true });
-    };
+    }
   </script>
 </head>
 <body>
   <button class="lang-toggle" onclick="toggleLang()">中 / En</button>
 
-  <header data-aos="fade-down">
+  <header>
     <h1>THE AIRTECH LTD</h1>
-    <p class="lang-en">Air Conditioning & HVAC Service in Auckland</p>
-    <p class="lang-zh">奥克兰空调与家电维修服务</p>
+    <p class="lang-en">Professional Appliance Repairs in Auckland</p>
+    <p class="lang-zh">奥克兰专业家电维修服务</p>
   </header>
 
-  <nav data-aos="fade">
-    <a href="#about">About Us</a>
+  <nav>
     <a href="#services">Services</a>
-    <a href="#gallery">Gallery</a>
+    <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about" data-aos="fade-up">
-    <h2 class="lang-en">About Us</h2>
-    <h2 class="lang-zh">关于我们</h2>
-    <p class="lang-en">We are a professional air conditioning and ventilation service provider based in Auckland, New Zealand. We specialize in installation, repair, and maintenance of residential and commercial HVAC systems.</p>
-    <p class="lang-zh">我们是新西兰奥克兰的专业空调与通风系统服务商，提供住宅和商用的安装、维修与维护服务。</p>
-    <p class="lang-en">We also offer expert repair services for a wide range of home appliances, including refrigerators, air conditioners, freezers, washing machines, televisions, ovens, induction cookers, and gas hobs.</p>
-    <p class="lang-zh">我们还提供多种家电的维修服务，包括冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉和打火灶。</p>
-  </section>
-
-  <section id="services" data-aos="fade-up">
-    <h2 class="lang-en">Our Services</h2>
-    <h2 class="lang-zh">我们的服务</h2>
-    <ul class="lang-en">
-      <li>Air Conditioning Installation & Repair</li>
-      <li>Freon Replenishment</li>
-      <li>System Cleaning and Maintenance</li>
-      <li>Heat Pump Installation</li>
-      <li>Commercial HVAC Solutions</li>
-      <li>Home Appliance Repair: Refrigerators, Air Conditioners, Freezers, Washing Machines, Televisions, Ovens, Induction Cookers, Gas Hobs</li>
-    </ul>
-    <ul class="lang-zh">
-      <li>空调安装与维修</li>
-      <li>冷媒补充</li>
-      <li>系统清洗与维护</li>
-      <li>热泵安装</li>
-      <li>商用暖通解决方案</li>
-      <li>家电维修：冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉、打火灶</li>
-    </ul>
-  </section>
-
-  <section id="gallery" data-aos="fade-up">
-    <h2 class="lang-en">Gallery</h2>
-    <h2 class="lang-zh">现场案例</h2>
-    <div class="gallery">
-      <img src="images/14d8712f873cd367e04fbfca6ba2495e.jpg" alt="Repair 1" />
-      <img src="images/31d9dfb6a8c6c46165286461f784e909.jpg" alt="Repair 2" />
-      <img src="images/36ac5f4989e9dde2cc9ff6bd4862c44.jpg" alt="Repair 3" />
-      <img src="images/9383fe67e7a6451c6edb266be5a408d.jpg" alt="Repair 4" />
-      <img src="images/b66febede08424c1fa062bed5517687.jpg" alt="Repair 5" />
-      <img src="images/dbd0b2c8393b3b4b4312e78d25ca976.jpg" alt="Repair 6" />
-      <img src="images/e34757376215a6e643c1ce62343287d60.jpg" alt="Repair 7" />
-      <img src="images/ff076cf3ef19351871b75e81c6157439.jpg" alt="Repair 8" />
+  <section class="hero">
+    <h2 class="lang-en">Fast, Reliable Home Appliance Repairs</h2>
+    <h2 class="lang-zh">快速可靠的家电维修服务</h2>
+    <div class="buttons">
+      <button class="lang-en">Book a Repair</button>
+      <button class="lang-zh">立即预约维修</button>
     </div>
   </section>
 
-  <section id="contact" data-aos="fade-up">
-    <h2 class="lang-en">Contact Us</h2>
-    <h2 class="lang-zh">联系我们</h2>
-    <p><strong>Email:</strong> support@theairtech.co.nz</p>
-    <p><strong class="lang-en">Phone:</strong><strong class="lang-zh">电话：</strong> 021 463 788</p>
-    <p><strong class="lang-en">Address:</strong><strong class="lang-zh">地址：</strong> 42 Upper Queen Street, Auckland</p>
+  <section id="services" class="services">
+    <h2 class="lang-en">Our Services</h2>
+    <h2 class="lang-zh">我们的服务</h2>
+    <div class="grid">
+      <div class="card lang-en">TV Repair</div>
+      <div class="card lang-zh">电视维修</div>
+
+      <div class="card lang-en">Fridge Repair</div>
+      <div class="card lang-zh">冰箱维修</div>
+
+      <div class="card lang-en">AC Repair</div>
+      <div class="card lang-zh">空调维修</div>
+
+      <div class="card lang-en">Microwave Repair</div>
+      <div class="card lang-zh">微波炉维修</div>
+
+      <div class="card lang-en">Washing Machine Repair</div>
+      <div class="card lang-zh">洗衣机维修</div>
+
+      <div class="card lang-en">Mixer Grinder Repair</div>
+      <div class="card lang-zh">搅拌机维修</div>
+
+      <div class="card lang-en">Cookware Stove Repair</div>
+      <div class="card lang-zh">炉灶维修</div>
+
+      <div class="card lang-en">Dishwasher Repair</div>
+      <div class="card lang-zh">洗碗机维修</div>
+
+      <div class="card lang-en">Water Heater Repair</div>
+      <div class="card lang-zh">热水器维修</div>
+
+      <div class="card lang-en">Dryer Repair</div>
+      <div class="card lang-zh">干衣机维修</div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 THE AIRTECH LTD. All rights reserved.</p>
+  <section id="testimonials" class="testimonials">
+    <h2 class="lang-en">What Our Customers Say</h2>
+    <h2 class="lang-zh">客户评价</h2>
+    <div class="testimonial lang-en">“THE AIRTECH team provided the best service I have ever experienced. They were very professional, friendly, and knowledgeable. Thanks for the excellent service.” — John D.</div>
+    <div class="testimonial lang-zh">“THE AIRTECH 团队提供了我经历过的最好的服务。他们非常专业，态度友好，经验丰富。感谢他们的出色服务。” — 张先生</div>
+
+    <div class="testimonial lang-en">“Very efficient and on time. They did a great job and very fast. I highly recommend THE AIRTECH.” — Lisa T.</div>
+    <div class="testimonial lang-zh">“工作效率高，准时。他们做得很好，速度也很快。我强烈推荐 THE AIRTECH。” — 李女士</div>
+
+    <div class="testimonial lang-en">“Great service. Called and got an appointment the same day. Technician was professional and prices were reasonable. Would recommend to all.” — Kevin R.</div>
+    <div class="testimonial lang-zh">“服务非常好。打电话后当天就安排了预约。技术人员很专业，价格合理，服务令人满意。推荐给所有人。” — 陈先生</div>
+
+    <div class="testimonial lang-en">“Excellent service. I repaired fridge and dryer, and the work was done very quickly. He has good knowledge in appliance repair. Very satisfied and highly recommended.” — Angela W.</div>
+    <div class="testimonial lang-zh">“服务非常棒。我修理了冰箱和干衣机，工作完成得很快。他对家电维修非常了解。我非常满意，强烈推荐。” — 王小姐</div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="lang-en">Contact Us</h2>
+    <h2 class="lang-zh">联系我们</h2>
+    <p><strong class="lang-en">Phone:</strong><strong class="lang-zh">电话：</strong> 021 463 788</p>
+    <p><strong class="lang-en">Email:</strong><strong class="lang-zh">邮箱：</strong> support@theairtech.co.nz</p>
+    <p><strong class="lang-en">Address:</strong><strong class="lang-zh">地址：</strong> 42 Upper Queen Street, Auckland</p>
+    <p><strong class="lang-en">Working Hours:</strong><strong class="lang-zh">营业时间：</strong> Mon - Sat, 8:00AM - 6:00PM</p>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 THE AIRTECH LTD. All rights reserved.
   </footer>
 </body>
 </html>
