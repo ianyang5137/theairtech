@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE AIRTECH LTD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #1e90ff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    section {
+      padding: 2rem;
+    }
+    footer {
+      background-color: #1e90ff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .gallery img {
+      max-width: 45%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .lang-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #1e90ff;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+  <script>
+    function toggleLang() {
+      const en = document.querySelectorAll('.lang-en');
+      const zh = document.querySelectorAll('.lang-zh');
+      en.forEach(e => e.style.display = e.style.display === 'none' ? 'block' : 'none');
+      zh.forEach(e => e.style.display = zh[0].style.display === 'none' ? 'block' : 'none');
+    }
+    window.onload = function() {
+      document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
+    };
+  </script>
+</head>
+<body>
+  <button class="lang-toggle" onclick="toggleLang()">中 / En</button>
+
+  <header>
+    <h1>THE AIRTECH LTD</h1>
+    <p class="lang-en">Air Conditioning & HVAC Service in Auckland</p>
+    <p class="lang-zh">奥克兰空调与家电维修服务</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2 class="lang-en">About Us</h2>
+    <h2 class="lang-zh">关于我们</h2>
+    <p class="lang-en">We are a professional air conditioning and ventilation service provider based in Auckland, New Zealand. We specialize in installation, repair, and maintenance of residential and commercial HVAC systems.</p>
+    <p class="lang-zh">我们是新西兰奥克兰的专业空调与通风系统服务商，提供住宅和商用的安装、维修与维护服务。</p>
+    <p class="lang-en">We also offer expert repair services for a wide range of home appliances, including refrigerators, air conditioners, freezers, washing machines, televisions, ovens, induction cookers, and gas hobs.</p>
+    <p class="lang-zh">我们还提供多种家电的维修服务，包括冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉和打火灶。</p>
+  </section>
+
+  <section id="services">
+    <h2 class="lang-en">Our Services</h2>
+    <h2 class="lang-zh">我们的服务</h2>
+    <ul class="lang-en">
+      <li>Air Conditioning Installation & Repair</li>
+      <li>Freon Replenishment</li>
+      <li>System Cleaning and Maintenance</li>
+      <li>Heat Pump Installation</li>
+      <li>Commercial HVAC Solutions</li>
+      <li>Home Appliance Repair: Refrigerators, Air Conditioners, Freezers, Washing Machines, Televisions, Ovens, Induction Cookers, Gas Hobs</li>
+    </ul>
+    <ul class="lang-zh">
+      <li>空调安装与维修</li>
+      <li>冷媒补充</li>
+      <li>系统清洗与维护</li>
+      <li>热泵安装</li>
+      <li>商用暖通解决方案</li>
+      <li>家电维修：冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉、打火灶</li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <h2 class="lang-en">Gallery</h2>
+    <h2 class="lang-zh">现场案例</h2>
+    <div class="gallery">
+      <img src="/mnt/data/F8F49C75-DBFF-4D68-892B-99EEC1E5ACAA.jpeg" alt="Appliance PCB Repair" />
+      <img src="/mnt/data/18F909AB-F421-467E-912B-E8B3044511E4.jpeg" alt="Outdoor HVAC Testing" />
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="lang-en">Contact Us</h2>
+    <h2 class="lang-zh">联系我们</h2>
+    <p><strong>Email:</strong> support@theairtech.co.nz</p>
+    <p><strong class="lang-en">Phone:</strong><strong class="lang-zh">电话：</strong> 021 463 788</p>
+    <p><strong class="lang-en">Address:</strong><strong class="lang-zh">地址：</strong> 42 Upper Queen Street, Auckland</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 THE AIRTECH LTD. All rights reserved.</p>
+  </footer>
+</body>
+</html>
