@@ -161,6 +161,27 @@
       margin: 0.5rem 0 0;
       color: #666;
     }
+    .wechat-qr {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .wechat-qr:hover {
+      transform: translateY(-5px);
+    }
+    .wechat-qr img {
+      max-width: 200px;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .wechat-qr h3 {
+      color: #0077cc;
+      margin-bottom: 1rem;
+    }
     .map-container {
       grid-column: 1 / -1;
       height: 300px;
@@ -347,6 +368,14 @@
             <span>Closed</span>
           </div>
         </div>
+      </div>
+
+      <div class="wechat-qr">
+        <h3 class="lang-en">WeChat QR Code</h3>
+        <h3 class="lang-zh">微信二维码</h3>
+        <img src="images/wx.jpg" alt="WeChat QR Code" />
+        <p class="lang-en">Scan to add us on WeChat</p>
+        <p class="lang-zh">扫描添加我们的微信</p>
       </div>
 
       <div class="map-container">
