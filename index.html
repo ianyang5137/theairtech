@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE AIRTECH LTD</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -12,45 +14,49 @@
       padding: 0;
       background-color: #f9fafb;
       color: #333;
+      scroll-behavior: smooth;
     }
 
     header {
-      background-color: #0077cc;
+      background: linear-gradient(to right, #0077cc, #00b4db);
       color: white;
       padding: 2rem;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background: #003e66;
-      padding: 1rem 0;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
-      color: white;
-      margin: 0 1rem;
+      color: #0077cc;
+      margin: 1rem;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffd700;
+      color: #ff6600;
     }
 
     section {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       max-width: 960px;
       margin: auto;
     }
 
     h2 {
       margin-bottom: 1rem;
-      border-bottom: 2px solid #eee;
       padding-bottom: 0.5rem;
+      border-bottom: 3px solid #0077cc;
     }
 
     ul {
@@ -60,6 +66,15 @@
 
     ul li {
       padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #0077cc;
     }
 
     .gallery {
@@ -72,9 +87,10 @@
     .gallery img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       display: none;
+      transition: all 0.5s ease-in-out;
     }
 
     .gallery img.active {
@@ -90,10 +106,12 @@
       background-color: #0077cc;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.2rem;
       margin: 0 0.5rem;
       border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .gallery-controls button:hover {
@@ -104,7 +122,9 @@
       background-color: #0077cc;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .lang-toggle {
@@ -131,6 +151,7 @@
     window.onload = function () {
       document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
       showImage(0);
+      AOS.init({ once: true });
     };
 
     let currentImage = 0;
@@ -155,20 +176,20 @@
 <body>
   <button class="lang-toggle" onclick="toggleLang()">中 / En</button>
 
-  <header>
+  <header data-aos="fade-down">
     <h1>THE AIRTECH LTD</h1>
     <p class="lang-en">Air Conditioning & HVAC Service in Auckland</p>
     <p class="lang-zh">奥克兰空调与家电维修服务</p>
   </header>
 
-  <nav>
+  <nav data-aos="fade">
     <a href="#about">About Us</a>
     <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2 class="lang-en">About Us</h2>
     <h2 class="lang-zh">关于我们</h2>
     <p class="lang-en">We are a professional air conditioning and ventilation service provider based in Auckland, New Zealand. We specialize in installation, repair, and maintenance of residential and commercial HVAC systems.</p>
@@ -177,7 +198,7 @@
     <p class="lang-zh">我们还提供多种家电的维修服务，包括冰箱、空调、冷柜、洗衣机、电视、烤箱、电磁炉和打火灶。</p>
   </section>
 
-  <section id="services">
+  <section id="services" data-aos="fade-up">
     <h2 class="lang-en">Our Services</h2>
     <h2 class="lang-zh">我们的服务</h2>
     <ul class="lang-en">
@@ -198,7 +219,7 @@
     </ul>
   </section>
 
-  <section id="gallery">
+  <section id="gallery" data-aos="fade-up">
     <h2 class="lang-en">Gallery</h2>
     <h2 class="lang-zh">现场案例</h2>
     <div class="gallery">
@@ -217,7 +238,7 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-up">
     <h2 class="lang-en">Contact Us</h2>
     <h2 class="lang-zh">联系我们</h2>
     <p><strong>Email:</strong> support@theairtech.co.nz</p>
