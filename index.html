@@ -179,11 +179,17 @@
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 1.5rem;
+      padding: 0.5rem 1rem;
       text-align: center;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
     }
     .card::before {
       content: '';
@@ -203,9 +209,9 @@
       transform: scaleX(1);
     }
     .card i {
-      font-size: 2rem;
+      font-size: 1.3rem;
       color: #0077cc;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
     }
     .testimonials {
       background: #f0f4f8;
