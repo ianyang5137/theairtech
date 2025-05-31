@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE AIRTECH LTD - Appliance Repair in Auckland</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("rw_o3G7urszbV4Uy0"); // 需要替换为您的EmailJS公钥
+    })();
+  </script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -12,11 +18,50 @@
       background: #f5f7fa;
       color: #333;
     }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .logo-text {
+      text-align: left;
+    }
+    .logo-text h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #0077cc, #00b4db);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo-text p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #fff;
+    }
     header {
-      background: linear-gradient(to right, #0077cc, #00b4db);
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
       padding: 4rem 2rem;
       text-align: center;
       color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.1;
     }
     header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
     header p { font-size: 1.2rem; }
@@ -132,14 +177,35 @@
     }
     .card {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       padding: 1.5rem;
       text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #0077cc, #00b4db);
+      transform: scaleX(0);
       transition: transform 0.3s ease;
     }
     .card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+    }
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    .card i {
+      font-size: 2rem;
+      color: #0077cc;
+      margin-bottom: 1rem;
     }
     .testimonials {
       background: #f0f4f8;
@@ -264,6 +330,181 @@
       text-align: center;
       padding: 2rem;
     }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077cc;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+    }
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to right, #0077cc, #00b4db);
+      width: 0;
+      transition: width 0.3s ease;
+      z-index: 1001;
+    }
+    .booking-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .booking-modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #0077cc;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #005fa3;
+    }
+    .price-check {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .price-check h3 {
+      text-align: center;
+      color: #0077cc;
+      margin-bottom: 1.5rem;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .price-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .price-item h4 {
+      margin: 0 0 0.5rem;
+      color: #333;
+    }
+    .price-item p {
+      margin: 0;
+      color: #0077cc;
+      font-weight: bold;
+    }
+    .faq {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .faq h2 {
+      text-align: center;
+      color: #0077cc;
+      margin-bottom: 2rem;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      color: #333;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: #0077cc;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 1000px;
+    }
   </style>
   <script>
     let currentLang = 'en';
@@ -287,12 +528,18 @@
   </script>
 </head>
 <body>
+  <div class="loading-bar"></div>
   <button class="lang-toggle" onclick="toggleLang()">中 / En</button>
 
   <header>
-    <h1>THE AIRTECH LTD</h1>
-    <p class="lang-en">Professional Appliance Repairs in Auckland</p>
-    <p class="lang-zh">奥克兰专业家电维修服务</p>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="THE AIRTECH LTD Logo">
+      <div class="logo-text">
+        <h1>THE AIRTECH LTD</h1>
+        <p class="lang-en">Professional Appliance Repairs in Auckland</p>
+        <p class="lang-zh">奥克兰专业家电维修服务</p>
+      </div>
+    </div>
   </header>
 
   <nav>
@@ -305,8 +552,8 @@
     <h2 class="lang-en">Fast, Reliable Home Appliance Repairs</h2>
     <h2 class="lang-zh">快速可靠的家电维修服务</h2>
     <div class="buttons">
-      <button class="lang-en">Book a Repair</button>
-      <button class="lang-zh">立即预约维修</button>
+      <button class="lang-en" onclick="openBookingModal()">Book a Repair</button>
+      <button class="lang-zh" onclick="openBookingModal()">立即预约维修</button>
     </div>
   </section>
 
@@ -314,11 +561,23 @@
     <h2 class="lang-en">Our Services</h2>
     <h2 class="lang-zh">我们的服务</h2>
     <div class="grid">
-      <div class="card lang-en">Air Conditioner Installation</div>
-      <div class="card lang-zh">空调安装</div>
+      <div class="card lang-en">
+        <i class="fas fa-snowflake"></i>
+        Air Conditioner Installation
+      </div>
+      <div class="card lang-zh">
+        <i class="fas fa-snowflake"></i>
+        空调安装
+      </div>
 
-      <div class="card lang-en">TV Repair</div>
-      <div class="card lang-zh">电视维修</div>
+      <div class="card lang-en">
+        <i class="fas fa-tv"></i>
+        TV Repair
+      </div>
+      <div class="card lang-zh">
+        <i class="fas fa-tv"></i>
+        电视维修
+      </div>
 
       <div class="card lang-en">Fridge Repair</div>
       <div class="card lang-zh">冰箱维修</div>
@@ -428,6 +687,93 @@
     <div class="testimonial lang-zh">“服务非常棒。我修理了冰箱和干衣机，工作完成得很快。他对家电维修非常了解。我非常满意，强烈推荐。” — 王小姐</div>
   </section>
 
+  <section class="price-check">
+    <h3 class="lang-en">Service Price Guide</h3>
+    <h3 class="lang-zh">服务价格指南</h3>
+    <div class="price-grid">
+      <div class="price-item">
+        <h4 class="lang-en">Air Conditioner Installation</h4>
+        <h4 class="lang-zh">空调安装</h4>
+        <p>From $150</p>
+      </div>
+      <div class="price-item">
+        <h4 class="lang-en">TV Repair</h4>
+        <h4 class="lang-zh">电视维修</h4>
+        <p>From $80</p>
+      </div>
+      <div class="price-item">
+        <h4 class="lang-en">Fridge Repair</h4>
+        <h4 class="lang-zh">冰箱维修</h4>
+        <p>From $100</p>
+      </div>
+      <div class="price-item">
+        <h4 class="lang-en">Washing Machine Repair</h4>
+        <h4 class="lang-zh">洗衣机维修</h4>
+        <p>From $90</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2 class="lang-en">Frequently Asked Questions</h2>
+    <h2 class="lang-zh">常见问题</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="lang-en">What areas do you service?</span>
+        <span class="lang-zh">你们服务哪些区域？</span>
+      </div>
+      <div class="faq-answer">
+        <p class="lang-en">We provide services throughout the greater Auckland area, including North Shore, West Auckland, and South Auckland.</p>
+        <p class="lang-zh">我们为大奥克兰地区提供服务，包括北岸、西区和南区。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="lang-en">How long does a typical repair take?</span>
+        <span class="lang-zh">一般维修需要多长时间？</span>
+      </div>
+      <div class="faq-answer">
+        <p class="lang-en">Most repairs can be completed within 1-2 hours. However, complex issues may require additional time or parts.</p>
+        <p class="lang-zh">大多数维修可以在1-2小时内完成。但是，复杂的问题可能需要更多时间或零件。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="lang-en">Do you offer warranty on repairs?</span>
+        <span class="lang-zh">维修有保修吗？</span>
+      </div>
+      <div class="faq-answer">
+        <p class="lang-en">Yes, we offer a 30-day warranty on all our repairs and parts.</p>
+        <p class="lang-zh">是的，我们为所有维修和零件提供30天保修。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="lang-en">What payment methods do you accept?</span>
+        <span class="lang-zh">你们接受哪些支付方式？</span>
+      </div>
+      <div class="faq-answer">
+        <p class="lang-en">We accept cash, credit cards, and bank transfers. Payment is due upon completion of the service.</p>
+        <p class="lang-zh">我们接受现金、信用卡和银行转账。服务完成后付款。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span class="lang-en">Do you provide emergency services?</span>
+        <span class="lang-zh">你们提供紧急服务吗？</span>
+      </div>
+      <div class="faq-answer">
+        <p class="lang-en">Yes, we offer emergency repair services for urgent situations. Please call us directly for immediate assistance.</p>
+        <p class="lang-zh">是的，我们为紧急情况提供紧急维修服务。请直接致电我们获取即时帮助。</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="contact">
     <h2 class="lang-en">Contact Us</h2>
     <h2 class="lang-zh">联系我们</h2>
@@ -505,8 +851,152 @@
     </div>
   </section>
 
+  <div class="back-to-top">↑</div>
+
   <footer class="footer">
     &copy; 2025 THE AIRTECH LTD. All rights reserved.
   </footer>
+
+  <div class="booking-modal" id="bookingModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeBookingModal()">×</button>
+      <h2 class="lang-en">Book a Repair</h2>
+      <h2 class="lang-zh">预约维修</h2>
+      <form id="bookingForm" onsubmit="submitBooking(event)">
+        <div class="form-group">
+          <label class="lang-en">Service Type</label>
+          <label class="lang-zh">服务类型</label>
+          <select name="service" required>
+            <option value="">Select a service</option>
+            <option value="ac-install">Air Conditioner Installation</option>
+            <option value="tv-repair">TV Repair</option>
+            <option value="fridge-repair">Fridge Repair</option>
+            <option value="ac-repair">AC Repair</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Name</label>
+          <label class="lang-zh">姓名</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Phone</label>
+          <label class="lang-zh">电话</label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Email</label>
+          <label class="lang-zh">邮箱</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Address</label>
+          <label class="lang-zh">地址</label>
+          <input type="text" name="address" required>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Preferred Date</label>
+          <label class="lang-zh"> preferred date</label>
+          <input type="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Preferred Time</label>
+          <label class="lang-zh"> preferred time</label>
+          <select name="time" required>
+            <option value="">Select a time</option>
+            <option value="morning">Morning (8:00 - 12:00)</option>
+            <option value="afternoon">Afternoon (12:00 - 16:00)</option>
+            <option value="evening">Evening (16:00 - 18:00)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="lang-en">Description of Problem</label>
+          <label class="lang-zh">问题描述</label>
+          <textarea name="description" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn lang-en">Submit Booking</button>
+        <button type="submit" class="submit-btn lang-zh">提交预约</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // 返回顶部按钮
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 页面加载进度条
+    window.addEventListener('load', () => {
+      const loadingBar = document.querySelector('.loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => {
+        loadingBar.style.opacity = '0';
+      }, 500);
+    });
+
+    // 预约模态框
+    function openBookingModal() {
+      document.getElementById('bookingModal').classList.add('active');
+    }
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.remove('active');
+    }
+    function submitBooking(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // 显示加载状态
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      // 发送邮件
+      emailjs.send('service_dvogezb', 'template_2qtf2hl', {
+        service: data.service,
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        address: data.address,
+        date: data.date,
+        time: data.time,
+        description: data.description
+      })
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Booking submitted successfully! We will contact you soon.');
+        form.reset();
+        closeBookingModal();
+      })
+      .catch(function(error) {
+        console.error('FAILED...', error);
+        alert('Sorry, there was an error submitting your booking. Please try again or call us directly.');
+      })
+      .finally(function() {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+    }
+
+    // FAQ 交互
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
