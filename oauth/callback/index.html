@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth Callback</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <script>
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const state = urlParams.get('state');
+        
+        if (code) {
+            // 构建重定向URL，将参数传递给iOS应用
+            const redirectUrl = `airtech://oauth-callback?code=${code}${state ? '&state=' + state : ''}`;
+            
+            // 尝试打开iOS应用
+            window.location.href = redirectUrl;
+            
+            // 如果应用没有安装，显示提示
+            setTimeout(() => {
+                document.body.innerHTML = '<h2>请返回AIRTECH应用</h2><p>OAuth认证已完成，请返回应用查看结果。</p>';
+            }, 2000);
+        } else {
+            document.body.innerHTML = '<h2>OAuth错误</h2><p>未找到授权码，请重试。</p>';
+        }
+    </script>
+</body>
+</html>
