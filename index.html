@@ -3,1458 +3,1831 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OY‘s Appliance Services - Appliance Repair in Auckland</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>OY's Appliance Services | Appliance Repair in Auckland</title>
+  <meta
+    name="description"
+    content="OY's Appliance Services provides fast, reliable appliance repair, refrigeration, and air conditioning services across Auckland."
+  />
+  <meta
+    name="keywords"
+    content="Auckland appliance repair, fridge repair, washing machine repair, air conditioning repair, commercial refrigeration"
+  />
+  <meta name="theme-color" content="#0d5c63" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("rw_o3G7urszbV4Uy0"); // 需要替换为您的EmailJS公钥
+    (function () {
+      emailjs.init("rw_o3G7urszbV4Uy0");
     })();
   </script>
   <style>
     :root {
-      --primary-color: #2196F3;
-      --primary-light: #64B5F6;
-      --primary-dark: #1976D2;
-      --text-dark: #2C3E50;
-      --text-light: #7F8C8D;
-      --background-light: #F8F9FA;
-      --white: #FFFFFF;
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-      --transition: all 0.3s ease;
-      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      --ink-900: #12343b;
+      --ink-700: #365a60;
+      --ink-500: #5e7d83;
+      --surface: #f5f7f4;
+      --surface-strong: #ffffff;
+      --accent: #0d5c63;
+      --accent-2: #44a1a0;
+      --accent-3: #f4b860;
+      --border: rgba(18, 52, 59, 0.1);
+      --shadow-sm: 0 10px 24px rgba(18, 52, 59, 0.08);
+      --shadow-lg: 0 24px 56px rgba(18, 52, 59, 0.14);
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --max-width: 1180px;
+      --transition: 220ms ease;
     }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: var(--background-light);
-      color: var(--text-dark);
-      line-height: 1.6;
+    * {
+      box-sizing: border-box;
     }
+
     html {
       scroll-behavior: smooth;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 0 auto;
-      transform: translateY(0);
-      transition: transform 0.3s ease;
-      text-align: left;
-    }
-    .logo:hover {
-      transform: translateY(-5px);
-    }
-    .logo img {
-      width: 80px;
-      height: 80px;
-      border-radius: 15px;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .logo img:hover {
-      transform: scale(1.05) rotate(2deg);
-    }
-    .logo-text {
-      text-align: left;
-      flex: 1;
-    }
-    .logo-text h1 {
+
+    body {
       margin: 0;
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      background: linear-gradient(45deg, #ffffff, #E3F2FD);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-      text-align: left;
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(68, 161, 160, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(244, 184, 96, 0.18), transparent 22%),
+        linear-gradient(180deg, #f6fbfa 0%, #eef3f0 100%);
+      color: var(--ink-900);
+      line-height: 1.6;
     }
-    .logo-text p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-align: left;
-    }
-    header {
-      background: var(--gradient-primary);
-      padding: 4rem 2rem;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
-      animation: gradientShift 15s ease infinite;
-    }
-    @keyframes gradientShift {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    header p { font-size: 1.2rem; }
-    nav {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 1.2rem 2rem;
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-    }
-    .nav-links {
-      display: flex;
-      gap: 3rem;
-    }
-    nav a {
+
+    a {
+      color: inherit;
       text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      padding: 0.8rem 1.5rem;
-      border-radius: 12px;
-      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .loading-bar {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-3));
+      z-index: 1100;
+      transition: width 400ms ease, opacity 300ms ease;
+    }
+
+    .site-shell {
       position: relative;
       overflow: hidden;
     }
-    nav a::before {
-      content: '';
+
+    .site-shell::before,
+    .site-shell::after {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-primary);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      border-radius: 999px;
+      filter: blur(10px);
       z-index: -1;
     }
-    nav a:hover {
-      color: var(--white);
-      transform: translateY(-2px);
+
+    .site-shell::before {
+      width: 360px;
+      height: 360px;
+      background: rgba(68, 161, 160, 0.18);
+      top: 100px;
+      left: -120px;
     }
-    nav a:hover::before {
-      opacity: 1;
+
+    .site-shell::after {
+      width: 280px;
+      height: 280px;
+      background: rgba(244, 184, 96, 0.16);
+      top: 680px;
+      right: -90px;
     }
+
     .lang-toggle {
       position: fixed;
-      top: 10px;
-      right: 10px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      z-index: 1000;
-    }
-    .lang-toggle:hover {
-      background: var(--primary-dark);
-    }
-    .hero {
-      text-align: center;
-      padding: 2rem 2rem;
-      background: transparent;
-      position: relative;
-      z-index: 1;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10, 186, 181, 0.05), rgba(127, 219, 255, 0.05));
-      z-index: -1;
-    }
-    .hero h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 2;
-    }
-    .hero .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      position: relative;
-      z-index: 2;
-      margin-bottom: 0;
-    }
-    .hero button {
-      background: var(--primary-color);
+      top: 18px;
+      right: 18px;
+      z-index: 1050;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(18, 52, 59, 0.78);
       color: #fff;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 24px rgba(18, 52, 59, 0.2);
+      transition: transform var(--transition), background var(--transition);
     }
-    .hero button:hover {
-      background: var(--primary-dark);
+
+    .lang-toggle:hover,
+    .lang-toggle:focus-visible {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      background: rgba(13, 92, 99, 0.92);
     }
-    .services {
-      padding: 4rem 2rem;
-      background: transparent;
-      position: relative;
-    }
-    .services::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(10, 186, 181, 0.02), rgba(127, 219, 255, 0.02));
-      z-index: -1;
-    }
-    .services h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--text-dark);
-      margin-bottom: 3rem;
-      position: relative;
-      z-index: 1;
-    }
-    .services h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--gradient-primary);
-      border-radius: 2px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2.5rem;
-      position: relative;
-      z-index: 1;
-      max-width: 1400px;
+
+    .topbar {
+      max-width: var(--max-width);
       margin: 0 auto;
+      padding: 1rem 1.5rem 0;
     }
-    .card {
-      background: var(--white);
-      border-radius: 20px;
-      box-shadow: var(--shadow-md);
-      padding: 1.5rem;
-      text-align: center;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      height: 60px;
+
+    .topbar-card {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
       gap: 1rem;
-      border: 1px solid rgba(0,0,0,0.05);
+      padding: 0.9rem 1.2rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      color: var(--ink-700);
+      font-size: 0.95rem;
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+
+    .topbar-contact {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
     }
-    .card:hover {
-      transform: translateY(-5px);
+
+    .topbar-contact span,
+    .topbar-contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem 4rem;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      padding: 2rem;
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, rgba(10, 40, 44, 0.95), rgba(13, 92, 99, 0.88)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+      color: #fff;
+      overflow: hidden;
       box-shadow: var(--shadow-lg);
     }
-    .card:hover::before {
-      transform: scaleX(1);
-    }
-    .card i {
-      font-size: 1.5rem;
-      color: var(--primary-color);
-      margin-bottom: 0;
-    }
-    .gallery {
-      padding: 8rem 2rem;
-      background: var(--white);
-      margin: 0;
-      position: relative;
-    }
-    .gallery::before {
-      content: '';
+
+    .hero::before {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(10, 186, 181, 0.02), rgba(127, 219, 255, 0.02));
-      z-index: 0;
+      inset: auto -70px -70px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(244, 184, 96, 0.14);
     }
-    .gallery h2 {
-      text-align: center;
-      color: var(--text-dark);
-      margin-bottom: 3rem;
-      font-size: 3rem;
+
+    .hero-copy,
+    .hero-visual {
       position: relative;
       z-index: 1;
     }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.3rem 0 1rem;
+    }
+
+    .brand-lockup img {
+      width: 78px;
+      height: 78px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.32);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand-title h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-title p {
+      margin: 0.45rem 0 0;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-copy h2 {
+      margin: 1.1rem 0 1rem;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.08;
+      max-width: 12ch;
+    }
+
+    .hero-copy .lead {
+      margin: 0;
+      max-width: 56ch;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 50px;
+      padding: 0.9rem 1.3rem;
+      border: none;
+      border-radius: 999px;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      font-weight: 700;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-3), #ffd086);
+      color: #18353b;
+      box-shadow: 0 16px 28px rgba(244, 184, 96, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .trust-card {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-visual {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .feature-panel {
+      display: grid;
+      gap: 0.9rem;
+      padding: 1.3rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-panel h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .service-badges {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .service-badges span {
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.92rem;
+    }
+
+    .hero-gallery {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .hero-gallery img {
+      width: 100%;
+      height: 100%;
+      min-height: 210px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .stacked {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0 1.5rem 1rem;
+    }
+
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--ink-700);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.is-active {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: 2rem 1.5rem 0;
+    }
+
+    .section-card {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.2rem;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      margin: 0.5rem 0 0;
+      max-width: 60ch;
+      color: var(--ink-700);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      padding: 1.25rem;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f4faf9);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 22px rgba(18, 52, 59, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 32px rgba(18, 52, 59, 0.11);
+    }
+
+    .service-card i {
+      width: 52px;
+      height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      margin-bottom: 0.9rem;
+      background: rgba(68, 161, 160, 0.14);
+      color: var(--accent);
+      font-size: 1.35rem;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .service-card p {
+      margin: 0.55rem 0 0;
+      color: var(--ink-700);
+      font-size: 0.96rem;
+    }
+
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .promise-card {
+      padding: 1.25rem;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(13, 92, 99, 0.06), rgba(244, 184, 96, 0.08));
+      border: 1px solid rgba(13, 92, 99, 0.08);
+    }
+
+    .promise-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .promise-card p {
+      margin: 0;
+      color: var(--ink-700);
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 1rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
+
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      aspect-ratio: 4/3;
+      border-radius: 24px;
+      min-height: 260px;
+      box-shadow: var(--shadow-sm);
     }
-    .gallery-item:hover {
-      transform: scale(1.03);
-      box-shadow: var(--shadow-lg);
-    }
+
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
+      transition: transform 300ms ease;
     }
+
     .gallery-item:hover img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
+
     .gallery-caption {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      padding: 2rem 1.5rem 1.5rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
+      inset: auto 0 0 0;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, transparent, rgba(10, 40, 44, 0.86));
+      color: #fff;
     }
-    .gallery-item:hover .gallery-caption {
-      transform: translateY(0);
+
+    .gallery-caption strong {
+      display: block;
+      font-size: 1rem;
     }
-    .testimonials {
-      background: #f0f4f8;
-      padding: 4rem 2rem;
-      text-align: center;
+
+    .gallery-caption span {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.92rem;
     }
-    .testimonials h2 { margin-bottom: 2rem; }
-    .testimonial {
-      max-width: 600px;
-      margin: 1rem auto;
-      font-style: italic;
-    }
-    .contact {
-      padding: 8rem 2rem;
-      background: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(10, 186, 181, 0.02), rgba(127, 219, 255, 0.02));
-      z-index: 0;
-    }
-    .contact h2 {
-      text-align: center;
-      font-size: 3rem;
-      color: var(--text-dark);
-      margin-bottom: 4rem;
-      position: relative;
-      z-index: 1;
-    }
-    .contact-container {
-      max-width: 1400px;
-      margin: 0 auto;
+
+    .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 3rem;
-      position: relative;
-      z-index: 1;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
     }
-    .contact-info {
-      background: var(--white);
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid rgba(0,0,0,0.05);
+
+    .testimonial {
+      padding: 1.4rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff, #f8fbfa);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 22px rgba(18, 52, 59, 0.06);
     }
-    .contact-info:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+
+    .testimonial .stars {
+      color: #d99a27;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.12em;
     }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      border-radius: 15px;
-      transition: var(--transition);
-    }
-    .contact-item:hover {
-      background: var(--background-light);
-    }
-    .contact-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--gradient-primary);
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1.5rem;
-      color: var(--white);
-      font-size: 1.8rem;
-      transition: var(--transition);
-    }
-    .contact-item:hover .contact-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-    .contact-text {
-      flex: 1;
-    }
-    .contact-text h3 {
+
+    .testimonial p {
       margin: 0;
-      color: #333;
-      font-size: 1.1rem;
+      color: var(--ink-700);
     }
-    .contact-text p {
-      margin: 0.5rem 0 0;
-      color: #666;
+
+    .testimonial strong {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--ink-900);
     }
-    .wechat-qr {
-      background: #f8f9fa;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s ease;
+
+    .faq-list {
+      display: grid;
+      gap: 0.9rem;
     }
-    .wechat-qr:hover {
-      transform: translateY(-5px);
-    }
-    .wechat-qr img {
-      max-width: 200px;
-      height: auto;
-      margin: 1rem 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .wechat-qr h3 {
-      color: #0077cc;
-      margin-bottom: 1rem;
-    }
-    .map-container {
-      grid-column: 1 / -1;
-      height: 300px;
-      background: #e9ecef;
-      border-radius: 10px;
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
       overflow: hidden;
     }
-    .business-hours {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--ink-900);
+      text-align: left;
+      font-weight: 800;
     }
-    .business-hours:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
+
+    .faq-question i {
+      transition: transform var(--transition);
+      color: var(--accent);
     }
-    .business-hours h3 {
-      color: #0077cc;
-      margin-bottom: 1rem;
+
+    .faq-item.active .faq-question i {
+      transform: rotate(45deg);
     }
-    .hours-grid {
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease, padding 260ms ease;
+      padding: 0 1.25rem;
+      color: var(--ink-700);
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      max-height: 240px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+      gap: 1.2rem;
+    }
+
+    .contact-stack {
       display: grid;
       gap: 1rem;
     }
-    .hours-item {
+
+    .info-card,
+    .hours-card,
+    .wechat-card,
+    .form-card,
+    .map-card {
+      padding: 1.4rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff, #f7fbfa);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 22px rgba(18, 52, 59, 0.06);
+    }
+
+    .info-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .info-item {
       display: flex;
-      justify-content: space-between;
-      padding: 0.8rem;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      transition: var(--transition);
+      gap: 0.9rem;
+      align-items: start;
     }
-    .hours-item:hover {
-      background: var(--background-light);
-      border-radius: 8px;
-    }
-    .footer {
-      background: var(--gradient-primary);
-      color: var(--white);
-      text-align: center;
-      padding: 3rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    }
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--primary-color);
+
+    .info-icon {
+      flex: 0 0 50px;
       width: 50px;
       height: 50px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1000;
-      font-size: 1.5rem;
-      font-weight: bold;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      backdrop-filter: blur(5px);
-      border: 2px solid rgba(33, 150, 243, 0.2);
+      border-radius: 16px;
+      background: rgba(68, 161, 160, 0.15);
+      color: var(--accent);
     }
-    .back-to-top:hover {
-      background: var(--primary-color);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+
+    .info-item h3,
+    .hours-card h3,
+    .wechat-card h3,
+    .form-card h3,
+    .map-card h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
     }
-    .back-to-top.visible {
-      opacity: 1;
+
+    .info-item p,
+    .hours-card p,
+    .wechat-card p,
+    .form-card p {
+      margin: 0;
+      color: var(--ink-700);
     }
-    .loading-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(to right, #0077cc, #00b4db);
-      width: 0;
-      transition: width 0.3s ease;
-      z-index: 1001;
+
+    .hours-list {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
     }
-    .booking-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .booking-modal.active {
+
+    .hours-row {
       display: flex;
-      opacity: 1;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(18, 52, 59, 0.08);
+      color: var(--ink-700);
     }
-    .modal-content {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 400px;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-      box-shadow: var(--shadow-lg);
-      max-height: 90vh;
-      overflow-y: auto;
+
+    .wechat-card img {
+      width: min(210px, 100%);
+      margin: 1rem auto 0.8rem;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(18, 52, 59, 0.12);
     }
-    .modal-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
     }
+
     .form-group {
-      margin-bottom: 1rem;
+      display: grid;
+      gap: 0.4rem;
     }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
     .form-group label {
-      display: block;
-      margin-bottom: 0.3rem;
-      color: var(--text-dark);
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink-900);
     }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 0.6rem;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      background: var(--background-light);
-    }
-    .form-group textarea {
-      height: 60px;
-      resize: vertical;
-    }
-    .submit-btn {
-      background: var(--gradient-primary);
-      color: var(--white);
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: var(--transition);
-      margin-top: 0.5rem;
-    }
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      background: var(--primary-dark);
-    }
-    .close-modal {
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      width: 40px;
-      height: 40px;
-    }
-    .price-check {
-      background: #f8f9fa;
-      padding: 2rem;
-      border-radius: 15px;
-      margin: 2rem auto;
-      max-width: 800px;
-    }
-    .price-check h3 {
-      text-align: center;
-      color: #0077cc;
-      margin-bottom: 1.5rem;
-    }
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .price-item {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .price-item h4 {
-      margin: 0 0 0.5rem;
-      color: #333;
-    }
-    .price-item p {
-      margin: 0;
-      color: #0077cc;
-      font-weight: bold;
-    }
-    .faq {
-      padding: 4rem 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .faq h2 {
-      text-align: center;
-      color: #0077cc;
-      margin-bottom: 2rem;
-    }
-    .faq-item {
-      background: white;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    .faq-question {
-      padding: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-      color: #333;
-    }
-    .faq-question::after {
-      content: '+';
-      font-size: 1.5rem;
-      color: #0077cc;
-      transition: transform 0.3s ease;
-    }
-    .faq-item.active .faq-question::after {
-      transform: rotate(45deg);
-    }
-    .faq-answer {
-      padding: 0 1.5rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-    .faq-item.active .faq-answer {
-      padding: 0 1.5rem 1.5rem;
-      max-height: 1000px;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .services, .gallery, .testimonials, .faq, .contact {
-      animation: fadeInUp 0.6s ease-out;
-    }
-    @media (max-width: 768px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-      .modal-content {
-        padding: 1.5rem;
-      }
-      .contact-info, .business-hours {
-        padding: 1.5rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .contact-item {
-        flex-direction: column;
-        text-align: center;
-      }
-      .contact-icon {
-        margin: 0 0 1rem 0;
-      }
-      .hours-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
-      }
-    }
-    .brands {
-      padding: 4rem 2rem;
-      background: var(--white);
-      text-align: center;
-      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(18, 52, 59, 0.14);
+      background: #fbfdfc;
+      color: var(--ink-900);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
 
-    .brands h2 {
-      font-size: 2.5rem;
-      color: var(--text-dark);
-      margin-bottom: 3rem;
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(68, 161, 160, 0.14);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 0.7rem;
+    }
+
+    .submit-btn.is-loading {
+      opacity: 0.9;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      min-height: 280px;
+      border: 0;
+      border-radius: 18px;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      max-width: var(--max-width);
+      margin: 2rem auto 0;
+      padding: 0 1.5rem 2rem;
+    }
+
+    .footer-card {
+      padding: 1.4rem 1.5rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(10, 40, 44, 0.95), rgba(13, 92, 99, 0.88));
+      color: rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-card p {
+      margin: 0;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 52px;
+      height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(13, 92, 99, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity var(--transition), transform var(--transition), background var(--transition);
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .booking-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      background: rgba(10, 40, 44, 0.58);
+      backdrop-filter: blur(8px);
+      z-index: 1200;
+    }
+
+    .booking-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      width: min(760px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      padding: 1.4rem;
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: var(--shadow-lg);
       position: relative;
     }
 
-    .brands h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--gradient-primary);
-      border-radius: 2px;
-    }
-
-    .brands-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    .brand-item {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 15px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
+    .modal-head {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      align-items: start;
+      justify-content: space-between;
       gap: 1rem;
+      margin-bottom: 0.8rem;
     }
 
-    .brand-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
+    .modal-head h2,
+    .modal-head p {
+      margin: 0;
     }
 
-    .brand-item img {
-      width: 120px;
-      height: 60px;
-      object-fit: contain;
-      filter: grayscale(100%);
-      transition: var(--transition);
+    .close-modal {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(18, 52, 59, 0.12);
+      background: #f4f7f6;
+      color: var(--ink-900);
     }
 
-    .brand-item:hover img {
-      filter: grayscale(0%);
+    .hidden-lang {
+      display: none !important;
     }
 
-    .brand-item span {
-      color: var(--text-dark);
-      font-weight: 500;
-      font-size: 1.1rem;
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms ease, transform 500ms ease;
     }
 
-    @media (max-width: 768px) {
-      .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .promise-grid,
+      .trust-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy h2 {
+        max-width: none;
       }
     }
 
-    @media (max-width: 480px) {
-      .brands-grid {
+    @media (max-width: 720px) {
+      .lang-toggle {
+        top: 12px;
+        right: 12px;
+      }
+
+      .topbar,
+      .hero-wrap,
+      section,
+      .footer,
+      .nav-wrap {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .topbar-card,
+      nav,
+      .section-card,
+      .hero {
+        border-radius: 24px;
+      }
+
+      .topbar-card,
+      nav,
+      .section-heading,
+      .footer-card,
+      .brand-lockup {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding: 1.3rem;
+      }
+
+      .hero-gallery {
         grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hours-row {
+        flex-direction: column;
+        gap: 0.2rem;
       }
     }
   </style>
-  <script>
-    let currentLang = 'en';
-    function toggleLang() {
-      const en = document.querySelectorAll('.lang-en');
-      const zh = document.querySelectorAll('.lang-zh');
-      if (currentLang === 'en') {
-        en.forEach(e => e.style.display = 'none');
-        zh.forEach(e => e.style.display = 'block');
-        currentLang = 'zh';
-      } else {
-        zh.forEach(e => e.style.display = 'none');
-        en.forEach(e => e.style.display = 'block');
-        currentLang = 'en';
-      }
-    }
-    window.onload = function () {
-      document.querySelectorAll('.lang-zh').forEach(e => e.style.display = 'none');
-      document.querySelectorAll('.lang-en').forEach(e => e.style.display = 'block');
-    }
-  </script>
 </head>
 <body>
-  <div class="loading-bar"></div>
-  <button class="lang-toggle" onclick="toggleLang()">中 / En</button>
+  <div class="loading-bar" aria-hidden="true"></div>
+  <button class="lang-toggle" type="button" onclick="toggleLang()" aria-label="Switch language">
+    <span class="lang-en">中文 / EN</span>
+    <span class="lang-zh hidden-lang">EN / 中文</span>
+  </button>
 
-  <header>
-    <div class="logo">
-      <img src="images/wx.jpg" alt="OY‘s Appliance Services Logo">
-      <div class="logo-text">
-        <h1>OY‘s Appliance Services</h1>
-        <p class="lang-en">Professional Appliance Repairs in Auckland</p>
-        <p class="lang-zh">奥克兰专业家电维修服务</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <section id="home" class="hero">
-    <h2 class="lang-en">Fast, Reliable Home Appliance Repairs</h2>
-    <h2 class="lang-zh">快速可靠的家电维修服务</h2>
-    <div class="buttons">
-      <button class="lang-en" onclick="openBookingModal()">Book a Repair</button>
-      <button class="lang-zh" onclick="openBookingModal()">立即预约维修</button>
-    </div>
-  </section>
-
-  <section id="services" class="services">
-    <h2 class="lang-en">Our Services</h2>
-    <h2 class="lang-zh">我们的服务</h2>
-    <div class="grid">
-      <div class="card lang-en">
-        <i class="fas fa-snowflake"></i>
-        AC Installation
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-snowflake"></i>
-        空调安装
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-tv"></i>
-        TV Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-tv"></i>
-        电视维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-temperature-low"></i>
-        Fridge Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-temperature-low"></i>
-        冰箱维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-wind"></i>
-        AC Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-wind"></i>
-        空调维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-fire-alt"></i>
-        Microwave Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-fire-alt"></i>
-        微波炉维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-tshirt"></i>
-        Washing Machine Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-tshirt"></i>
-        洗衣机维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-snowflake"></i>
-        Freezer Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-snowflake"></i>
-        冷柜维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-fire"></i>
-        Cookware Stove Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-fire"></i>
-        炉灶维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-utensils"></i>
-        Dishwasher Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-utensils"></i>
-        洗碗机维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-hot-tub"></i>
-        Water Heater Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-hot-tub"></i>
-        热水器维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-sun"></i>
-        Dryer Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-sun"></i>
-        干衣机维修
-      </div>
-
-      <div class="card lang-en">
-        <i class="fas fa-fire"></i>
-        Oven Repair
-      </div>
-      <div class="card lang-zh">
-        <i class="fas fa-fire"></i>
-        烤箱维修
-      </div>
-    </div>
-  </section>
-
-  <section class="brands">
-    <h2 class="lang-en">Our Service Brands</h2>
-    <h2 class="lang-zh">服务品牌</h2>
-    <div class="brands-grid">
-      <div class="brand-item">
-        <img src="images/brands/fisher-paykel.png" alt="Fisher & Paykel">
-        <span>Fisher & Paykel</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/brands/bosch.png" alt="Bosch">
-        <span>Bosch</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/brands/samsung.png" alt="Samsung">
-        <span>Samsung</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/brands/lg.png" alt="LG">
-        <span>LG</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/brands/whirlpool.png" alt="Whirlpool">
-        <span>Whirlpool</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/brands/miele.png" alt="Miele">
-        <span>Miele</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="gallery">
-    <h2 class="lang-en">Our Work Gallery</h2>
-    <h2 class="lang-zh">工作展示</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="images/9.jpg" alt="Repair Work 1">
-        <div class="gallery-caption">
-          <p class="lang-en">Air Conditioner Installation</p>
-          <p class="lang-zh">空调安装</p>
+  <div class="site-shell">
+    <div class="topbar">
+      <div class="topbar-card">
+        <div class="topbar-contact">
+          <a href="tel:021463788"><i class="fas fa-phone"></i> 021 463 788</a>
+          <a href="mailto:support@theairtech.co.nz"><i class="fas fa-envelope"></i> support@theairtech.co.nz</a>
+          <span><i class="fas fa-location-dot"></i> 2 Dunbar Road, Auckland</span>
         </div>
-      </div>
-              <div class="gallery-item">
-        <img src="images/gree.jpg" alt="Repair Work 10">
-        <div class="gallery-caption">
-          <p class="lang-en">Commercial Refrigeration Repair & Installation</p>
-          <p class="lang-zh">商业冷柜维修安装</p>
-        </div>
-      </div>
-        <div class="gallery-item">
-        <img src="images/12.jpg" alt="Repair Work 10">
-        <div class="gallery-caption">
-          <p class="lang-en">Commercial Refrigeration Repair & Installation</p>
-          <p class="lang-zh">商业冷柜维修安装</p>
-        </div>
-      </div>
-            <div class="gallery-item">
-        <img src="images/11.jpg" alt="Repair Work 5">
-        <div class="gallery-caption">
-          <p class="lang-en">Air Conditioner Repair</p>
-          <p class="lang-zh">空调维修</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="images/2.jpg" alt="Repair Work 2">
-        <div class="gallery-caption">
-          <p class="lang-en">Refrigerator Repair</p>
-          <p class="lang-zh">冰箱维修</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="images/4.jpg" alt="Repair Work 4">
-        <div class="gallery-caption">
-          <p class="lang-en">Dishwasher Repair</p>
-          <p class="lang-zh">洗碗机维修</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="images/6.jpg" alt="Repair Work 6">
-        <div class="gallery-caption">
-          <p class="lang-en">Commercial Dryer Repair</p>
-          <p class="lang-zh">商业烘干机维修</p>
-        </div>
-      </div>
-            <div class="gallery-item">
-        <img src="images/3.jpg" alt="Repair Work 3">
-        <div class="gallery-caption">
-          <p class="lang-en">TV Repair</p>
-          <p class="lang-zh">电视维修</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="images/7.jpg" alt="Repair Work 7">
-        <div class="gallery-caption">
-          <p class="lang-en">Refrigerator Repair</p>
-          <p class="lang-zh">冰箱维修</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="images/8.jpg" alt="Repair Work 8">
-        <div class="gallery-caption">
-          <p class="lang-en">Commercial Display Cabinet Repair</p>
-          <p class="lang-zh">商业展示柜维修</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="images/10.jpg" alt="Repair Work 10">
-        <div class="gallery-caption">
-          <p class="lang-en">Gas Stove Repair</p>
-          <p class="lang-zh">打火灶维修</p>
-        </div>
-      </div>
-        <div class="gallery-item">
-        <img src="images/qx.jpg" alt="Repair Work 10">
-        <div class="gallery-caption">
-          <p class="lang-en">Appliance Cleaning Services</p>
-          <p class="lang-zh">家电清洗服务</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="testimonials" class="testimonials">
-    <h2 class="lang-en">What Our Customers Say</h2>
-    <h2 class="lang-zh">客户评价</h2>
-    <div class="testimonial lang-en">"OY‘s Appliance Services team provided the best service I have ever experienced. They were very professional, friendly, and knowledgeable. Thanks for the excellent service." — John D.</div>
-    <div class="testimonial lang-zh">"OY‘s Appliance Services 团队提供了我经历过的最好的服务。他们非常专业，态度友好，经验丰富。感谢他们的出色服务。" — 张先生</div>
-
-    <div class="testimonial lang-en">"Very efficient and on time. They did a great job and very fast. I highly recommend OY‘s Appliance Services." — Lisa T.</div>
-    <div class="testimonial lang-zh">"工作效率高，准时。他们做得很好，速度也很快。我强烈推荐 OY‘s Appliance Services。" — 李女士</div>
-
-    <div class="testimonial lang-en">"Great service. Called and got an appointment the same day. Technician was professional and prices were reasonable. Would recommend to all." — Kevin R.</div>
-    <div class="testimonial lang-zh">"服务非常好。打电话后当天就安排了预约。技术人员很专业，价格合理，服务令人满意。推荐给所有人。" — 陈先生</div>
-
-    <div class="testimonial lang-en">"Excellent service. I repaired fridge and dryer, and the work was done very quickly. He has good knowledge in appliance repair. Very satisfied and highly recommended." — Angela W.</div>
-    <div class="testimonial lang-zh">"服务非常棒。我修理了冰箱和干衣机，工作完成得很快。他对家电维修非常了解。我非常满意，强烈推荐。" — 王小姐</div>
-  </section>
-
-  <section class="faq">
-    <h2 class="lang-en">Frequently Asked Questions</h2>
-    <h2 class="lang-zh">常见问题</h2>
-    
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="lang-en">What areas do you service?</span>
-        <span class="lang-zh">你们服务哪些区域？</span>
-      </div>
-      <div class="faq-answer">
-        <p class="lang-en">We provide services throughout the greater Auckland area, including North Shore, West Auckland, and South Auckland.</p>
-        <p class="lang-zh">我们为大奥克兰地区提供服务，包括北岸、西区和南区。</p>
+        <span class="lang-en"><i class="fas fa-clock"></i> Mon-Sat 8:00 AM - 6:00 PM</span>
+        <span class="lang-zh hidden-lang"><i class="fas fa-clock"></i> 周一至周六 8:00 AM - 6:00 PM</span>
       </div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="lang-en">How long does a typical repair take?</span>
-        <span class="lang-zh">一般维修需要多长时间？</span>
-      </div>
-      <div class="faq-answer">
-        <p class="lang-en">Most repairs can be completed within 1-2 hours. However, complex issues may require additional time or parts.</p>
-        <p class="lang-zh">大多数维修可以在1-2小时内完成。但是，复杂的问题可能需要更多时间或零件。</p>
-      </div>
-    </div>
+    <header class="hero-wrap" id="home">
+      <div class="hero">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow lang-en"><i class="fas fa-bolt"></i> Fast response across Auckland</span>
+          <span class="eyebrow lang-zh hidden-lang"><i class="fas fa-bolt"></i> 奥克兰快速上门响应</span>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="lang-en">Do you offer warranty on repairs?</span>
-        <span class="lang-zh">维修有保修吗？</span>
-      </div>
-      <div class="faq-answer">
-        <p class="lang-en">Yes, we offer a 30-day warranty on all our repairs and parts.</p>
-        <p class="lang-zh">是的，我们为所有维修和零件提供30天保修。</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="lang-en">What payment methods do you accept?</span>
-        <span class="lang-zh">你们接受哪些支付方式？</span>
-      </div>
-      <div class="faq-answer">
-        <p class="lang-en">We accept cash, credit cards, and bank transfers. Payment is due upon completion of the service.</p>
-        <p class="lang-zh">我们接受现金、信用卡和银行转账。服务完成后付款。</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span class="lang-en">Do you provide emergency services?</span>
-        <span class="lang-zh">你们提供紧急服务吗？</span>
-      </div>
-      <div class="faq-answer">
-        <p class="lang-en">Yes, we offer emergency repair services for urgent situations. Please call us directly for immediate assistance.</p>
-        <p class="lang-zh">是的，我们为紧急情况提供紧急维修服务。请直接致电我们获取即时帮助。</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2 class="lang-en">Contact Us</h2>
-    <h2 class="lang-zh">联系我们</h2>
-    
-    <div class="contact-container">
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
+          <div class="brand-lockup">
+            <img src="images/wx.jpg" alt="OY's Appliance Services" />
+            <div class="brand-title">
+              <h1>OY's Appliance Services</h1>
+              <p class="lang-en">Trusted home and commercial appliance repair specialists</p>
+              <p class="lang-zh hidden-lang">值得信赖的家用与商用电器维修专家</p>
+            </div>
           </div>
-          <div class="contact-text">
-            <h3 class="lang-en">Phone</h3>
-            <h3 class="lang-zh">电话</h3>
-            <p>021 463 788</p>
+
+          <h2 class="lang-en">Reliable appliance, refrigeration, and air conditioning repairs.</h2>
+          <h2 class="lang-zh hidden-lang">专注家电、商用制冷与空调维修，快速可靠。</h2>
+
+          <p class="lead lang-en">
+            We repair fridges, washing machines, dryers, dishwashers, ovens, TVs, air conditioners, and commercial display cabinets with clear communication and practical solutions.
+          </p>
+          <p class="lead lang-zh hidden-lang">
+            我们提供冰箱、洗衣机、干衣机、洗碗机、烤箱、电视、空调和商用展示冷柜等维修服务，沟通清晰、上门及时、解决务实。
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" onclick="openBookingModal()">
+              <i class="fas fa-calendar-check"></i>
+              <span class="lang-en">Book a Repair</span>
+              <span class="lang-zh hidden-lang">立即预约维修</span>
+            </button>
+            <a class="btn btn-secondary" href="#contact">
+              <i class="fas fa-phone-volume"></i>
+              <span class="lang-en">Contact Us</span>
+              <span class="lang-zh hidden-lang">查看联系方式</span>
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-card">
+              <strong class="lang-en">Same-day</strong>
+              <strong class="lang-zh hidden-lang">当天响应</strong>
+              <span class="lang-en">When schedules allow</span>
+              <span class="lang-zh hidden-lang">有空档时可当天安排</span>
+            </div>
+            <div class="trust-card">
+              <strong class="lang-en">Home + Commercial</strong>
+              <strong class="lang-zh hidden-lang">家用 + 商用</strong>
+              <span class="lang-en">Broader repair coverage</span>
+              <span class="lang-zh hidden-lang">覆盖更多维修场景</span>
+            </div>
+            <div class="trust-card">
+              <strong class="lang-en">Clear pricing</strong>
+              <strong class="lang-zh hidden-lang">报价清晰</strong>
+              <span class="lang-en">Transparent before work starts</span>
+              <span class="lang-zh hidden-lang">施工前先沟通报价</span>
+            </div>
           </div>
         </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
+
+        <div class="hero-visual" data-reveal>
+          <div class="feature-panel">
+            <h3 class="lang-en">Popular repair categories</h3>
+            <h3 class="lang-zh hidden-lang">常见维修项目</h3>
+            <div class="service-badges">
+              <span class="lang-en">Fridge Repair</span>
+              <span class="lang-zh hidden-lang">冰箱维修</span>
+              <span class="lang-en">Washer &amp; Dryer</span>
+              <span class="lang-zh hidden-lang">洗衣机和干衣机</span>
+              <span class="lang-en">Air Conditioning</span>
+              <span class="lang-zh hidden-lang">空调服务</span>
+              <span class="lang-en">Commercial Refrigeration</span>
+              <span class="lang-zh hidden-lang">商用制冷</span>
+              <span class="lang-en">Dishwashers</span>
+              <span class="lang-zh hidden-lang">洗碗机</span>
+              <span class="lang-en">Cooktops &amp; Ovens</span>
+              <span class="lang-zh hidden-lang">炉灶和烤箱</span>
+            </div>
           </div>
-          <div class="contact-text">
-            <h3 class="lang-en">Email</h3>
-            <h3 class="lang-zh">邮箱</h3>
-            <p>support@theairtech.co.nz</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="contact-text">
-            <h3 class="lang-en">Address</h3>
-            <h3 class="lang-zh">地址</h3>
-            <p>2 Dunbar Road, Auckland</p>
+
+          <div class="hero-gallery">
+            <img src="images/9.jpg" alt="Air conditioning installation work" loading="eager" />
+            <div class="stacked">
+              <img src="images/11.jpg" alt="Air conditioning repair work" loading="lazy" />
+              <img src="images/gree.jpg" alt="Commercial refrigeration service work" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
+    </header>
 
-      <div class="business-hours">
-        <h3 class="lang-en">Business Hours</h3>
-        <h3 class="lang-zh">营业时间</h3>
-        <div class="hours-grid">
-          <div class="hours-item">
-            <span class="lang-en">Monday - Friday</span>
-            <span class="lang-zh">周一至周五</span>
-            <span>8:00 AM - 6:00 PM</span>
-          </div>
-          <div class="hours-item">
-            <span class="lang-en">Saturday</span>
-            <span class="lang-zh">周六</span>
-            <span>8:00 AM - 6:00 PM</span>
-          </div>
-          <div class="hours-item">
-            <span class="lang-en">Sunday</span>
-            <span class="lang-zh">周日</span>
-            <span>Closed</span>
-          </div>
+    <div class="nav-wrap">
+      <nav aria-label="Main navigation">
+        <div class="nav-brand">OY's Appliance Services</div>
+        <div class="nav-links">
+          <a href="#home" class="is-active">
+            <span class="lang-en">Home</span>
+            <span class="lang-zh hidden-lang">首页</span>
+          </a>
+          <a href="#services">
+            <span class="lang-en">Services</span>
+            <span class="lang-zh hidden-lang">服务项目</span>
+          </a>
+          <a href="#gallery">
+            <span class="lang-en">Gallery</span>
+            <span class="lang-zh hidden-lang">案例展示</span>
+          </a>
+          <a href="#testimonials">
+            <span class="lang-en">Reviews</span>
+            <span class="lang-zh hidden-lang">客户评价</span>
+          </a>
+          <a href="#faq">
+            <span class="lang-en">FAQ</span>
+            <span class="lang-zh hidden-lang">常见问题</span>
+          </a>
+          <a href="#contact">
+            <span class="lang-en">Contact</span>
+            <span class="lang-zh hidden-lang">联系我们</span>
+          </a>
         </div>
-      </div>
-
-      <div class="wechat-qr">
-        <h3 class="lang-en">WeChat QR Code</h3>
-        <h3 class="lang-zh">微信二维码</h3>
-        <img src="images/wx.jpg" alt="WeChat QR Code" />
-        <p class="lang-en">Scan to add us on WeChat</p>
-        <p class="lang-zh">扫描添加我们的微信</p>
-      </div>
-
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.617516582773!2d174.7633!3d-36.8504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47fb5a9ce6fb%3A0x500ef6143a2d600!2s2%20Dunbar%20Rd%2C%20Auckland!5e0!3m2!1sen!2snz!4v1647881234567!5m2!1sen!2snz" 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
+      </nav>
     </div>
-  </section>
 
-  <div class="back-to-top">↑</div>
+    <main>
+      <section id="services">
+        <div class="section-card" data-reveal>
+          <div class="section-heading">
+            <div>
+              <h2 class="lang-en">Repair Services That Cover Everyday Breakdowns</h2>
+              <h2 class="lang-zh hidden-lang">覆盖日常与商用场景的维修服务</h2>
+              <p class="lang-en">From urgent cooling issues to routine appliance faults, we handle a broad range of repair and installation work around Auckland.</p>
+              <p class="lang-zh hidden-lang">从紧急制冷故障到常见家电问题，我们提供覆盖奥克兰多区域的维修与安装服务。</p>
+            </div>
+          </div>
 
-  <footer class="footer">
-    &copy; 2025 OY‘s Appliance Services. All rights reserved.
-  </footer>
+          <div class="services-grid">
+            <article class="service-card">
+              <i class="fas fa-snowflake"></i>
+              <h3 class="lang-en">Air Conditioner Installation</h3>
+              <h3 class="lang-zh hidden-lang">空调安装</h3>
+              <p class="lang-en">New installs, replacements, and clean setup for homes and light commercial spaces.</p>
+              <p class="lang-zh hidden-lang">适用于住宅和轻商用空间的新装、替换与规范安装。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-wind"></i>
+              <h3 class="lang-en">Air Conditioner Repair</h3>
+              <h3 class="lang-zh hidden-lang">空调维修</h3>
+              <p class="lang-en">Troubleshooting airflow, cooling loss, drainage, and system faults.</p>
+              <p class="lang-zh hidden-lang">处理不制冷、风量弱、排水异常和系统故障等问题。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-temperature-low"></i>
+              <h3 class="lang-en">Fridge &amp; Freezer Repair</h3>
+              <h3 class="lang-zh hidden-lang">冰箱与冷柜维修</h3>
+              <p class="lang-en">Cooling issues, leaks, frost buildup, unusual noises, and performance loss.</p>
+              <p class="lang-zh hidden-lang">针对不制冷、漏水、结霜、异响和性能下降等问题。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-store"></i>
+              <h3 class="lang-en">Commercial Refrigeration</h3>
+              <h3 class="lang-zh hidden-lang">商用制冷维修</h3>
+              <p class="lang-en">Display cabinets, commercial coolers, and refrigeration systems for shops.</p>
+              <p class="lang-zh hidden-lang">适用于门店展示柜、商用冷柜和相关制冷设备。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-tshirt"></i>
+              <h3 class="lang-en">Washing Machine &amp; Dryer Repair</h3>
+              <h3 class="lang-zh hidden-lang">洗衣机与干衣机维修</h3>
+              <p class="lang-en">Spin issues, drainage faults, heating problems, and control failures.</p>
+              <p class="lang-zh hidden-lang">处理甩干异常、排水故障、加热异常和控制面板问题。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-utensils"></i>
+              <h3 class="lang-en">Dishwasher Repair</h3>
+              <h3 class="lang-zh hidden-lang">洗碗机维修</h3>
+              <p class="lang-en">Water intake, pump, drainage, and wash cycle problems.</p>
+              <p class="lang-zh hidden-lang">解决进水、排水、泵体和洗涤流程异常等问题。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-fire"></i>
+              <h3 class="lang-en">Cooktop, Stove &amp; Oven Repair</h3>
+              <h3 class="lang-zh hidden-lang">炉灶与烤箱维修</h3>
+              <p class="lang-en">Ignition faults, temperature inconsistency, and heating element issues.</p>
+              <p class="lang-zh hidden-lang">处理点火失败、温度不稳和加热部件故障等问题。</p>
+            </article>
+            <article class="service-card">
+              <i class="fas fa-tv"></i>
+              <h3 class="lang-en">TV &amp; Small Appliance Repair</h3>
+              <h3 class="lang-zh hidden-lang">电视与小家电维修</h3>
+              <p class="lang-en">Support for common household electronics and selected small appliances.</p>
+              <p class="lang-zh hidden-lang">支持常见家庭电子设备及部分小家电的检修。</p>
+            </article>
+          </div>
 
-  <div class="booking-modal" id="bookingModal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeBookingModal()">×</button>
-      <h2 class="lang-en">Book a Repair</h2>
-      <h2 class="lang-zh">预约维修</h2>
-      <form id="bookingForm" onsubmit="submitBooking(event)">
-        <div class="form-group">
-          <label class="lang-en">Service Type</label>
-          <label class="lang-zh">服务类型</label>
-          <select name="service" required>
-            <option value="">Select a service</option>
-            <option value="ac-install">Air Conditioner Installation</option>
-            <option value="tv-repair">TV Repair</option>
-            <option value="fridge-repair">Fridge Repair</option>
-            <option value="ac-repair">AC Repair</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="promise-grid">
+            <div class="promise-card">
+              <h3 class="lang-en">Clear Communication</h3>
+              <h3 class="lang-zh hidden-lang">沟通清楚</h3>
+              <p class="lang-en">We explain the issue in plain language before recommending the next step.</p>
+              <p class="lang-zh hidden-lang">先用易懂方式说明问题，再给出下一步建议。</p>
+            </div>
+            <div class="promise-card">
+              <h3 class="lang-en">Broad Coverage</h3>
+              <h3 class="lang-zh hidden-lang">覆盖更广</h3>
+              <p class="lang-en">Household appliances, air conditioning, and commercial refrigeration in one place.</p>
+              <p class="lang-zh hidden-lang">家电、空调和商用制冷，都可以一站式处理。</p>
+            </div>
+            <div class="promise-card">
+              <h3 class="lang-en">Practical Scheduling</h3>
+              <h3 class="lang-zh hidden-lang">预约灵活</h3>
+              <p class="lang-en">Call, email, or submit a booking request and we will confirm the best available slot.</p>
+              <p class="lang-zh hidden-lang">电话、邮件或在线预约后，我们会尽快确认合适时间。</p>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Name</label>
-          <label class="lang-zh">姓名</label>
-          <input type="text" name="name" required>
+      </section>
+
+      <section id="gallery">
+        <div class="section-card" data-reveal>
+          <div class="section-heading">
+            <div>
+              <h2 class="lang-en">Recent Work</h2>
+              <h2 class="lang-zh hidden-lang">近期案例</h2>
+              <p class="lang-en">A quick look at installation, repair, and commercial refrigeration jobs completed by our team.</p>
+              <p class="lang-zh hidden-lang">展示我们近期完成的安装、维修和商用制冷案例。</p>
+            </div>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="images/9.jpg" alt="Air conditioner installation" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Air Conditioner Installation</strong>
+                <strong class="lang-zh hidden-lang">空调安装</strong>
+                <span class="lang-en">Residential setup</span>
+                <span class="lang-zh hidden-lang">住宅安装案例</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/11.jpg" alt="Air conditioner repair" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Air Conditioner Repair</strong>
+                <strong class="lang-zh hidden-lang">空调维修</strong>
+                <span class="lang-en">Cooling issue diagnosis</span>
+                <span class="lang-zh hidden-lang">制冷问题排查</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/2.jpg" alt="Refrigerator repair work" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Refrigerator Repair</strong>
+                <strong class="lang-zh hidden-lang">冰箱维修</strong>
+                <span class="lang-en">Domestic appliance service</span>
+                <span class="lang-zh hidden-lang">家用设备维修</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/4.jpg" alt="Dishwasher repair work" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Dishwasher Repair</strong>
+                <strong class="lang-zh hidden-lang">洗碗机维修</strong>
+                <span class="lang-en">Kitchen appliance support</span>
+                <span class="lang-zh hidden-lang">厨房家电检修</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/6.jpg" alt="Commercial dryer repair work" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Commercial Dryer Repair</strong>
+                <strong class="lang-zh hidden-lang">商业烘干机维修</strong>
+                <span class="lang-en">Commercial equipment service</span>
+                <span class="lang-zh hidden-lang">商用设备检修</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/8.jpg" alt="Commercial display cabinet repair" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Display Cabinet Repair</strong>
+                <strong class="lang-zh hidden-lang">展示冷柜维修</strong>
+                <span class="lang-en">Retail refrigeration support</span>
+                <span class="lang-zh hidden-lang">零售冷藏设备维护</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/10.jpg" alt="Gas stove repair work" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Gas Stove Repair</strong>
+                <strong class="lang-zh hidden-lang">燃气灶维修</strong>
+                <span class="lang-en">Ignition and heat repair</span>
+                <span class="lang-zh hidden-lang">点火与火力问题处理</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/qx.jpg" alt="Appliance cleaning service" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <strong class="lang-en">Appliance Cleaning</strong>
+                <strong class="lang-zh hidden-lang">家电清洗</strong>
+                <span class="lang-en">Maintenance and hygiene care</span>
+                <span class="lang-zh hidden-lang">保养与清洁服务</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Phone</label>
-          <label class="lang-zh">电话</label>
-          <input type="tel" name="phone" required>
+      </section>
+
+      <section id="testimonials">
+        <div class="section-card" data-reveal>
+          <div class="section-heading">
+            <div>
+              <h2 class="lang-en">What Customers Say</h2>
+              <h2 class="lang-zh hidden-lang">客户怎么说</h2>
+              <p class="lang-en">Service quality matters most when someone is already dealing with a broken appliance. These comments highlight the experience we aim to deliver.</p>
+              <p class="lang-zh hidden-lang">当家电出问题时，服务体验尤其重要。以下评价体现了我们希望持续做到的标准。</p>
+            </div>
+          </div>
+
+          <div class="testimonial-grid">
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="lang-en">"Very professional, friendly, and knowledgeable. Thanks for the excellent service."</p>
+              <p class="lang-zh hidden-lang">“非常专业、友好，而且经验丰富。感谢这次出色的服务。”</p>
+              <strong class="lang-en">John D.</strong>
+              <strong class="lang-zh hidden-lang">张先生</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="lang-en">"Efficient, on time, and the repair was completed very quickly."</p>
+              <p class="lang-zh hidden-lang">“效率很高，也很准时，维修完成得非常快。”</p>
+              <strong class="lang-en">Lisa T.</strong>
+              <strong class="lang-zh hidden-lang">李女士</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="lang-en">"Called and got an appointment the same day. Professional technician and reasonable price."</p>
+              <p class="lang-zh hidden-lang">“当天电话联系当天就安排上门，技术人员专业，价格也合理。”</p>
+              <strong class="lang-en">Kevin R.</strong>
+              <strong class="lang-zh hidden-lang">陈先生</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p class="lang-en">"Fridge and dryer were repaired quickly, and the technician clearly knew the work."</p>
+              <p class="lang-zh hidden-lang">“冰箱和干衣机修得很快，师傅也很懂行，整体非常满意。”</p>
+              <strong class="lang-en">Angela W.</strong>
+              <strong class="lang-zh hidden-lang">王小姐</strong>
+            </article>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Email</label>
-          <label class="lang-zh">邮箱</label>
-          <input type="email" name="email" required>
+      </section>
+
+      <section id="faq">
+        <div class="section-card" data-reveal>
+          <div class="section-heading">
+            <div>
+              <h2 class="lang-en">Frequently Asked Questions</h2>
+              <h2 class="lang-zh hidden-lang">常见问题</h2>
+              <p class="lang-en">A few common questions customers ask before booking a repair.</p>
+              <p class="lang-zh hidden-lang">这里整理了一些客户预约前最常问的问题。</p>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span class="lang-en">What areas do you service?</span>
+                <span class="lang-zh hidden-lang">你们服务哪些区域？</span>
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p class="lang-en">We provide services across the greater Auckland area, including North Shore, West Auckland, Central Auckland, and South Auckland.</p>
+                <p class="lang-zh hidden-lang">我们提供覆盖大奥克兰区域的服务，包括北岸、西区、中区和南区。</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span class="lang-en">How long does a typical repair take?</span>
+                <span class="lang-zh hidden-lang">一般维修需要多长时间？</span>
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p class="lang-en">Many common repairs are completed within 1 to 2 hours, but some jobs may require extra time or parts ordering.</p>
+                <p class="lang-zh hidden-lang">很多常见维修可在 1 到 2 小时内完成，但复杂情况可能需要更长时间或等待配件。</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span class="lang-en">Do you offer warranty on repairs?</span>
+                <span class="lang-zh hidden-lang">维修有保修吗？</span>
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p class="lang-en">Yes. The current site states a 30-day warranty for repairs and parts.</p>
+                <p class="lang-zh hidden-lang">有的。当前网站信息显示维修和相关零件提供 30 天保修。</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span class="lang-en">What payment methods do you accept?</span>
+                <span class="lang-zh hidden-lang">你们接受哪些支付方式？</span>
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p class="lang-en">We accept cash, credit cards, and bank transfers. Payment is due once the service is completed.</p>
+                <p class="lang-zh hidden-lang">我们接受现金、信用卡和银行转账，通常在服务完成后付款。</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span class="lang-en">Do you provide emergency services?</span>
+                <span class="lang-zh hidden-lang">你们提供紧急服务吗？</span>
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class="faq-answer">
+                <p class="lang-en">Yes. For urgent situations, calling directly is still the fastest option.</p>
+                <p class="lang-zh hidden-lang">提供。遇到紧急情况时，直接电话联系通常是最快的方式。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Address</label>
-          <label class="lang-zh">地址</label>
-          <input type="text" name="address" required>
+      </section>
+
+      <section id="contact">
+        <div class="section-card" data-reveal>
+          <div class="section-heading">
+            <div>
+              <h2 class="lang-en">Contact and Booking</h2>
+              <h2 class="lang-zh hidden-lang">联系与预约</h2>
+              <p class="lang-en">Use the quick form below or contact us directly by phone, email, or WeChat.</p>
+              <p class="lang-zh hidden-lang">你可以直接填写表单，也可以通过电话、邮箱或微信联系我们。</p>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-stack">
+              <div class="info-card">
+                <div class="info-list">
+                  <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                      <h3 class="lang-en">Phone</h3>
+                      <h3 class="lang-zh hidden-lang">电话</h3>
+                      <p><a href="tel:021463788">021 463 788</a></p>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                      <h3 class="lang-en">Email</h3>
+                      <h3 class="lang-zh hidden-lang">邮箱</h3>
+                      <p><a href="mailto:support@theairtech.co.nz">support@theairtech.co.nz</a></p>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+                    <div>
+                      <h3 class="lang-en">Address</h3>
+                      <h3 class="lang-zh hidden-lang">地址</h3>
+                      <p>2 Dunbar Road, Auckland</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hours-card">
+                <h3 class="lang-en">Business Hours</h3>
+                <h3 class="lang-zh hidden-lang">营业时间</h3>
+                <div class="hours-list">
+                  <div class="hours-row">
+                    <span class="lang-en">Monday - Friday</span>
+                    <span class="lang-zh hidden-lang">周一至周五</span>
+                    <strong>8:00 AM - 6:00 PM</strong>
+                  </div>
+                  <div class="hours-row">
+                    <span class="lang-en">Saturday</span>
+                    <span class="lang-zh hidden-lang">周六</span>
+                    <strong>8:00 AM - 6:00 PM</strong>
+                  </div>
+                  <div class="hours-row">
+                    <span class="lang-en">Sunday</span>
+                    <span class="lang-zh hidden-lang">周日</span>
+                    <strong class="lang-en">Closed</strong>
+                    <strong class="lang-zh hidden-lang">休息</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wechat-card">
+                <h3 class="lang-en">WeChat</h3>
+                <h3 class="lang-zh hidden-lang">微信</h3>
+                <p class="lang-en">Scan the QR code to connect with us on WeChat.</p>
+                <p class="lang-zh hidden-lang">扫描二维码即可添加微信联系。</p>
+                <img src="images/wx.jpg" alt="WeChat QR Code" loading="lazy" />
+              </div>
+            </div>
+
+            <div class="contact-stack">
+              <div class="form-card">
+                <h3 class="lang-en">Quick Booking Request</h3>
+                <h3 class="lang-zh hidden-lang">快速预约表单</h3>
+                <p class="lang-en">Send us the basics and we will follow up to confirm timing.</p>
+                <p class="lang-zh hidden-lang">提交基本信息后，我们会尽快与你确认时间安排。</p>
+
+                <form id="bookingForm" onsubmit="submitBooking(event)">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="service">
+                        <span class="lang-en">Service Type</span>
+                        <span class="lang-zh hidden-lang">服务类型</span>
+                      </label>
+                      <select id="service" name="service" required>
+                        <option value="" data-lang-en="Select a service" data-lang-zh="请选择服务">Select a service</option>
+                        <option value="air-conditioning">Air Conditioning</option>
+                        <option value="fridge-freezer">Fridge / Freezer Repair</option>
+                        <option value="washer-dryer">Washing Machine / Dryer</option>
+                        <option value="dishwasher">Dishwasher Repair</option>
+                        <option value="cooking-appliance">Cooktop / Oven Repair</option>
+                        <option value="commercial-refrigeration">Commercial Refrigeration</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">
+                        <span class="lang-en">Name</span>
+                        <span class="lang-zh hidden-lang">姓名</span>
+                      </label>
+                      <input id="name" type="text" name="name" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="phone">
+                        <span class="lang-en">Phone</span>
+                        <span class="lang-zh hidden-lang">电话</span>
+                      </label>
+                      <input id="phone" type="tel" name="phone" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">
+                        <span class="lang-en">Email</span>
+                        <span class="lang-zh hidden-lang">邮箱</span>
+                      </label>
+                      <input id="email" type="email" name="email" required />
+                    </div>
+                    <div class="form-group full">
+                      <label for="address">
+                        <span class="lang-en">Address</span>
+                        <span class="lang-zh hidden-lang">地址</span>
+                      </label>
+                      <input id="address" type="text" name="address" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="date">
+                        <span class="lang-en">Preferred Date</span>
+                        <span class="lang-zh hidden-lang">期望日期</span>
+                      </label>
+                      <input id="date" type="date" name="date" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="time">
+                        <span class="lang-en">Preferred Time</span>
+                        <span class="lang-zh hidden-lang">期望时间段</span>
+                      </label>
+                      <select id="time" name="time" required>
+                        <option value="" data-lang-en="Select a time" data-lang-zh="请选择时间段">Select a time</option>
+                        <option value="morning" data-lang-en="Morning (8:00 - 12:00)" data-lang-zh="上午 (8:00 - 12:00)">Morning (8:00 - 12:00)</option>
+                        <option value="afternoon" data-lang-en="Afternoon (12:00 - 16:00)" data-lang-zh="下午 (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
+                        <option value="late-afternoon" data-lang-en="Late Afternoon (16:00 - 18:00)" data-lang-zh="傍晚 (16:00 - 18:00)">Late Afternoon (16:00 - 18:00)</option>
+                      </select>
+                    </div>
+                    <div class="form-group full">
+                      <label for="description">
+                        <span class="lang-en">Description of the Problem</span>
+                        <span class="lang-zh hidden-lang">问题描述</span>
+                      </label>
+                      <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <div class="form-group full">
+                      <button
+                        type="submit"
+                        class="btn btn-primary submit-btn"
+                        data-label-en="Submit Booking Request"
+                        data-label-zh="提交预约请求"
+                      >
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="lang-en">Submit Booking Request</span>
+                        <span class="lang-zh hidden-lang">提交预约请求</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="map-card">
+                <h3 class="lang-en">Service Location</h3>
+                <h3 class="lang-zh hidden-lang">服务地址</h3>
+                <p class="lang-en">Based in Auckland and serving the wider surrounding area.</p>
+                <p class="lang-zh hidden-lang">位于奥克兰，可服务周边更广区域。</p>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.617516582773!2d174.7633!3d-36.8504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47fb5a9ce6fb%3A0x500ef6143a2d600!2s2%20Dunbar%20Rd%2C%20Auckland!5e0!3m2!1sen!2snz!4v1647881234567!5m2!1sen!2snz"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Map showing 2 Dunbar Road, Auckland"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Preferred Date</label>
-          <label class="lang-zh"> preferred date</label>
-          <input type="date" name="date" required>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-card">
+        <p>&copy; 2026 OY's Appliance Services. All rights reserved.</p>
+        <p class="lang-en">Auckland appliance repairs for homes and businesses.</p>
+        <p class="lang-zh hidden-lang">服务奥克兰家庭与商用客户的家电维修团队。</p>
+      </div>
+    </footer>
+  </div>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div class="booking-modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+      <div class="modal-head">
+        <div>
+          <h2 id="bookingModalTitle" class="lang-en">Book a Repair</h2>
+          <h2 class="lang-zh hidden-lang">预约维修</h2>
+          <p class="lang-en">Use this quick request form and we will get back to you to confirm details.</p>
+          <p class="lang-zh hidden-lang">填写表单后，我们会尽快联系你确认详细信息。</p>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Preferred Time</label>
-          <label class="lang-zh"> preferred time</label>
-          <select name="time" required>
-            <option value="">Select a time</option>
-            <option value="morning">Morning (8:00 - 12:00)</option>
-            <option value="afternoon">Afternoon (12:00 - 16:00)</option>
-            <option value="evening">Evening (16:00 - 18:00)</option>
-          </select>
+        <button class="close-modal" type="button" onclick="closeBookingModal()" aria-label="Close booking form">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="modalBookingForm" onsubmit="submitBooking(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="modal-service">
+              <span class="lang-en">Service Type</span>
+              <span class="lang-zh hidden-lang">服务类型</span>
+            </label>
+            <select id="modal-service" name="service" required>
+              <option value="" data-lang-en="Select a service" data-lang-zh="请选择服务">Select a service</option>
+              <option value="air-conditioning">Air Conditioning</option>
+              <option value="fridge-freezer">Fridge / Freezer Repair</option>
+              <option value="washer-dryer">Washing Machine / Dryer</option>
+              <option value="dishwasher">Dishwasher Repair</option>
+              <option value="cooking-appliance">Cooktop / Oven Repair</option>
+              <option value="commercial-refrigeration">Commercial Refrigeration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="modal-name">
+              <span class="lang-en">Name</span>
+              <span class="lang-zh hidden-lang">姓名</span>
+            </label>
+            <input id="modal-name" type="text" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="modal-phone">
+              <span class="lang-en">Phone</span>
+              <span class="lang-zh hidden-lang">电话</span>
+            </label>
+            <input id="modal-phone" type="tel" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="modal-email">
+              <span class="lang-en">Email</span>
+              <span class="lang-zh hidden-lang">邮箱</span>
+            </label>
+            <input id="modal-email" type="email" name="email" required />
+          </div>
+          <div class="form-group full">
+            <label for="modal-address">
+              <span class="lang-en">Address</span>
+              <span class="lang-zh hidden-lang">地址</span>
+            </label>
+            <input id="modal-address" type="text" name="address" required />
+          </div>
+          <div class="form-group">
+            <label for="modal-date">
+              <span class="lang-en">Preferred Date</span>
+              <span class="lang-zh hidden-lang">期望日期</span>
+            </label>
+            <input id="modal-date" type="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="modal-time">
+              <span class="lang-en">Preferred Time</span>
+              <span class="lang-zh hidden-lang">期望时间段</span>
+            </label>
+            <select id="modal-time" name="time" required>
+              <option value="" data-lang-en="Select a time" data-lang-zh="请选择时间段">Select a time</option>
+              <option value="morning" data-lang-en="Morning (8:00 - 12:00)" data-lang-zh="上午 (8:00 - 12:00)">Morning (8:00 - 12:00)</option>
+              <option value="afternoon" data-lang-en="Afternoon (12:00 - 16:00)" data-lang-zh="下午 (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
+              <option value="late-afternoon" data-lang-en="Late Afternoon (16:00 - 18:00)" data-lang-zh="傍晚 (16:00 - 18:00)">Late Afternoon (16:00 - 18:00)</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="modal-description">
+              <span class="lang-en">Description of the Problem</span>
+              <span class="lang-zh hidden-lang">问题描述</span>
+            </label>
+            <textarea id="modal-description" name="description" required></textarea>
+          </div>
+          <div class="form-group full">
+            <button
+              type="submit"
+              class="btn btn-primary submit-btn"
+              data-label-en="Submit Booking Request"
+              data-label-zh="提交预约请求"
+            >
+              <i class="fas fa-paper-plane"></i>
+              <span class="lang-en">Submit Booking Request</span>
+              <span class="lang-zh hidden-lang">提交预约请求</span>
+            </button>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="lang-en">Description of Problem</label>
-          <label class="lang-zh">问题描述</label>
-          <textarea name="description" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn lang-en">Submit Booking</button>
-        <button type="submit" class="submit-btn lang-zh">提交预约</button>
       </form>
     </div>
   </div>
 
   <script>
-    // 返回顶部按钮
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const state = {
+      currentLang: "en"
+    };
 
-    // 页面加载进度条
-    window.addEventListener('load', () => {
-      const loadingBar = document.querySelector('.loading-bar');
-      loadingBar.style.width = '100%';
-      setTimeout(() => {
-        loadingBar.style.opacity = '0';
-      }, 500);
-    });
+    const langElements = document.querySelectorAll(".lang-en, .lang-zh");
+    const languageRoot = document.documentElement;
+    const bookingModal = document.getElementById("bookingModal");
+    const backToTop = document.querySelector(".back-to-top");
+    const loadingBar = document.querySelector(".loading-bar");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("main section, header[id]");
 
-    // 预约模态框
+    function applyLanguage(lang) {
+      state.currentLang = lang;
+      languageRoot.lang = lang === "zh" ? "zh-CN" : "en";
+
+      langElements.forEach((element) => {
+        const isTarget = element.classList.contains(`lang-${lang}`);
+        element.classList.toggle("hidden-lang", !isTarget);
+      });
+
+      document.querySelectorAll("option[data-lang-en]").forEach((option) => {
+        option.textContent = lang === "zh" ? option.dataset.langZh : option.dataset.langEn;
+      });
+    }
+
+    function toggleLang() {
+      applyLanguage(state.currentLang === "en" ? "zh" : "en");
+    }
+
     function openBookingModal() {
-      document.getElementById('bookingModal').classList.add('active');
+      bookingModal.classList.add("active");
+      bookingModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      const firstInput = bookingModal.querySelector("input, select, textarea");
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 50);
+      }
     }
+
     function closeBookingModal() {
-      document.getElementById('bookingModal').classList.remove('active');
+      bookingModal.classList.remove("active");
+      bookingModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
 
-    // 点击模态框外部关闭
-    document.getElementById('bookingModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeBookingModal();
-      }
-    });
-
-    // 按ESC键关闭模态框
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && document.getElementById('bookingModal').classList.contains('active')) {
-        closeBookingModal();
-      }
-    });
+    function getMessages() {
+      return state.currentLang === "zh"
+        ? {
+            sending: "发送中...",
+            success: "预约提交成功，我们会尽快联系你。",
+            error: "提交失败，请稍后重试，或直接拨打电话联系我们。"
+          }
+        : {
+            sending: "Sending...",
+            success: "Booking submitted successfully. We will contact you soon.",
+            error: "There was an error submitting your booking. Please try again or call us directly."
+          };
+    }
 
     function submitBooking(event) {
       event.preventDefault();
       const form = event.target;
+      const submitBtn = form.querySelector(".submit-btn");
+      const messages = getMessages();
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      // 显示加载状态
-      const submitBtn = form.querySelector('.submit-btn');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
+      submitBtn.classList.add("is-loading");
+      submitBtn.querySelectorAll("span").forEach((span) => {
+        span.textContent = messages.sending;
+      });
 
-      // 发送邮件
-      emailjs.send('service_dvogezb', 'template_2qtf2hl', {
+      emailjs.send("service_dvogezb", "template_2qtf2hl", {
         service: data.service,
         name: data.name,
         phone: data.phone,
@@ -1464,45 +1837,109 @@
         time: data.time,
         description: data.description
       })
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Booking submitted successfully! We will contact you soon.');
+      .then(() => {
+        alert(messages.success);
         form.reset();
         closeBookingModal();
       })
-      .catch(function(error) {
-        console.error('FAILED...', error);
-        alert('Sorry, there was an error submitting your booking. Please try again or call us directly.');
+      .catch(() => {
+        alert(messages.error);
       })
-      .finally(function() {
-        submitBtn.textContent = originalText;
+      .finally(() => {
         submitBtn.disabled = false;
+        submitBtn.classList.remove("is-loading");
+        const enLabel = submitBtn.dataset.labelEn || "Submit";
+        const zhLabel = submitBtn.dataset.labelZh || "提交";
+        const enSpan = submitBtn.querySelector(".lang-en");
+        const zhSpan = submitBtn.querySelector(".lang-zh");
+        if (enSpan) enSpan.textContent = enLabel;
+        if (zhSpan) zhSpan.textContent = zhLabel;
+        applyLanguage(state.currentLang);
       });
     }
 
-    // FAQ 交互
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const faqItem = question.parentElement;
-        faqItem.classList.toggle('active');
+    bookingModal.addEventListener("click", (event) => {
+      if (event.target === bookingModal) {
+        closeBookingModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && bookingModal.classList.contains("active")) {
+        closeBookingModal();
+      }
+    });
+
+    document.querySelectorAll(".faq-question").forEach((question) => {
+      question.addEventListener("click", () => {
+        const item = question.closest(".faq-item");
+        const isOpen = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((faq) => faq.classList.remove("active"));
+        if (!isOpen) {
+          item.classList.add("active");
+        }
       });
     });
 
-    // 添加导航菜单点击事件
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        const navHeight = document.querySelector('nav').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+    navLinks.forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if (!target) return;
+        const navHeight = document.querySelector("nav").offsetHeight;
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 14;
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
       });
     });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll("[data-reveal]").forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => {
+          link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+        });
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach((section) => {
+      if (section.id) {
+        sectionObserver.observe(section);
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 420) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("load", () => {
+      loadingBar.style.width = "100%";
+      setTimeout(() => {
+        loadingBar.style.opacity = "0";
+      }, 350);
+    });
+
+    applyLanguage("en");
   </script>
 </body>
 </html>
