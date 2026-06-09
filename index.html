@@ -106,8 +106,8 @@
 
     .lang-toggle {
       position: fixed;
-      top: 16px;
-      right: 16px;
+      right: 20px;
+      bottom: 86px;
       z-index: 1500;
       display: inline-flex;
       align-items: center;
@@ -235,13 +235,12 @@
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      gap: 0;
+      display: flex;
       align-items: stretch;
     }
 
     .hero-copy {
+      flex: 1 1 54%;
       padding: 3.2rem 3rem;
       position: relative;
     }
@@ -338,6 +337,7 @@
     }
 
     .hero-visual {
+      flex: 1 1 46%;
       position: relative;
       min-height: 100%;
       padding: 2rem;
@@ -868,8 +868,8 @@
     }
 
     [data-reveal] {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 450ms ease, transform 450ms ease;
     }
 
@@ -879,7 +879,6 @@
     }
 
     @media (max-width: 1100px) {
-      .hero-grid,
       .contact-grid {
         grid-template-columns: 1fr;
       }
@@ -897,10 +896,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .hero-visual {
-        border-left: 0;
-        border-top: 1px solid rgba(20, 20, 20, 0.05);
-      }
     }
 
     @media (max-width: 760px) {
@@ -913,8 +908,8 @@
       }
 
       .lang-toggle {
-        top: 12px;
         right: 12px;
+        bottom: 84px;
       }
 
       .header-inner,
@@ -929,6 +924,15 @@
 
       .nav-links {
         justify-content: flex-start;
+      }
+
+      .hero-grid {
+        flex-direction: column;
+      }
+
+      .hero-visual {
+        border-left: 0;
+        border-top: 1px solid rgba(20, 20, 20, 0.05);
       }
 
       .hero-copy,
@@ -1053,21 +1057,21 @@
 
               <div class="hero-points">
                 <div class="point-card">
-                  <strong class="lang-en">Same-day</strong>
+                  <strong class="lang-en">Fast Slots</strong>
                   <strong class="lang-zh hidden-lang">当天响应</strong>
-                  <span class="lang-en">Available when schedule allows.</span>
+                  <span class="lang-en">When available.</span>
                   <span class="lang-zh hidden-lang">有空档时可安排当天服务。</span>
                 </div>
                 <div class="point-card">
-                  <strong class="lang-en">Home + Commercial</strong>
+                  <strong class="lang-en">Homes &amp; Shops</strong>
                   <strong class="lang-zh hidden-lang">家用 + 商用</strong>
-                  <span class="lang-en">Broader service coverage.</span>
+                  <span class="lang-en">Broader coverage.</span>
                   <span class="lang-zh hidden-lang">覆盖更多维修场景。</span>
                 </div>
                 <div class="point-card">
                   <strong class="lang-en">Clear Quotes</strong>
                   <strong class="lang-zh hidden-lang">报价清晰</strong>
-                  <span class="lang-en">Work starts after explanation.</span>
+                  <span class="lang-en">Before work starts.</span>
                   <span class="lang-zh hidden-lang">施工前先沟通说明。</span>
                 </div>
               </div>
