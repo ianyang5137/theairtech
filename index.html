@@ -548,13 +548,48 @@
       font-size: 0.94rem;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .gallery-marquee {
+      position: relative;
+      overflow: hidden;
+      margin: 0 -2.2rem;
+      padding: 0.2rem 0 0.4rem;
+    }
+
+    .gallery-marquee::before,
+    .gallery-marquee::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 90px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .gallery-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--surface), transparent);
+    }
+
+    .gallery-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--surface), transparent);
+    }
+
+    .gallery-track {
+      display: flex;
       gap: 1rem;
+      width: max-content;
+      animation: gallery-scroll 58s linear infinite;
+      will-change: transform;
+    }
+
+    .gallery-marquee:hover .gallery-track {
+      animation-play-state: paused;
     }
 
     .gallery-item {
+      flex: 0 0 clamp(260px, 28vw, 390px);
       position: relative;
       overflow: hidden;
       min-height: 280px;
@@ -590,6 +625,26 @@
     .gallery-caption span {
       color: rgba(255, 255, 255, 0.78);
       font-size: 0.92rem;
+    }
+
+    @keyframes gallery-scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-50% - 0.5rem));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-marquee {
+        overflow-x: auto;
+      }
+
+      .gallery-track {
+        animation: none;
+      }
     }
 
     .reviews-grid {
@@ -930,12 +985,25 @@
 
       .hero-points,
       .category-row,
-      .gallery-grid,
       .services-grid,
       .reviews-grid,
       .trust-grid,
       .form-grid {
         grid-template-columns: 1fr;
+      }
+
+      .gallery-marquee {
+        margin: 0 -1.35rem;
+      }
+
+      .gallery-marquee::before,
+      .gallery-marquee::after {
+        width: 36px;
+      }
+
+      .gallery-item {
+        flex-basis: 260px;
+        min-height: 230px;
       }
 
       .hero-copy h1 {
@@ -1242,34 +1310,243 @@
             <p class="lang-zh hidden-lang">这些图片展示了我们日常处理的家用、商用制冷和家电维修工作类型。</p>
           </div>
 
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img src="images/9.jpg" alt="Air conditioner installation" loading="lazy" />
-              <figcaption class="gallery-caption">
-                <strong class="lang-en">Air Conditioner Installation</strong>
-                <strong class="lang-zh hidden-lang">空调安装</strong>
-                <span class="lang-en">Residential setup</span>
-                <span class="lang-zh hidden-lang">住宅安装案例</span>
-              </figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/4.jpg" alt="Dishwasher repair work" loading="lazy" />
-              <figcaption class="gallery-caption">
-                <strong class="lang-en">Dishwasher Repair</strong>
-                <strong class="lang-zh hidden-lang">洗碗机维修</strong>
-                <span class="lang-en">Kitchen appliance support</span>
-                <span class="lang-zh hidden-lang">厨房家电检修</span>
-              </figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/gree.jpg" alt="Commercial refrigeration service work" loading="lazy" />
-              <figcaption class="gallery-caption">
-                <strong class="lang-en">Commercial Refrigeration</strong>
-                <strong class="lang-zh hidden-lang">商用制冷服务</strong>
-                <span class="lang-en">Shop cooling support</span>
-                <span class="lang-zh hidden-lang">门店制冷设备支持</span>
-              </figcaption>
-            </figure>
+          <div class="gallery-marquee" aria-label="Recent work gallery">
+            <div class="gallery-track">
+              <figure class="gallery-item">
+                <img src="images/9.jpg" alt="Air conditioner installation" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioner Installation</strong>
+                  <strong class="lang-zh hidden-lang">空调安装</strong>
+                  <span class="lang-en">Residential setup</span>
+                  <span class="lang-zh hidden-lang">住宅安装案例</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/5.jpg" alt="Air conditioning service close-up" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioning Service</strong>
+                  <strong class="lang-zh hidden-lang">空调检修</strong>
+                  <span class="lang-en">Outdoor unit diagnosis</span>
+                  <span class="lang-zh hidden-lang">外机检测与维护</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/12.jpg" alt="Commercial equipment crane lift" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Equipment Installation</strong>
+                  <strong class="lang-zh hidden-lang">设备吊装安装</strong>
+                  <span class="lang-en">Commercial site support</span>
+                  <span class="lang-zh hidden-lang">商用现场支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/11.jpg" alt="Air conditioner repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioner Repair</strong>
+                  <strong class="lang-zh hidden-lang">空调维修</strong>
+                  <span class="lang-en">Cooling issue diagnosis</span>
+                  <span class="lang-zh hidden-lang">制冷问题排查</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/gree.jpg" alt="Commercial refrigeration service work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Commercial Refrigeration</strong>
+                  <strong class="lang-zh hidden-lang">商用制冷服务</strong>
+                  <span class="lang-en">Shop cooling support</span>
+                  <span class="lang-zh hidden-lang">门店制冷设备支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/2.jpg" alt="Refrigerator repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Refrigerator Repair</strong>
+                  <strong class="lang-zh hidden-lang">冰箱维修</strong>
+                  <span class="lang-en">Domestic appliance service</span>
+                  <span class="lang-zh hidden-lang">家用设备维修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/4.jpg" alt="Dishwasher repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Dishwasher Repair</strong>
+                  <strong class="lang-zh hidden-lang">洗碗机维修</strong>
+                  <span class="lang-en">Kitchen appliance support</span>
+                  <span class="lang-zh hidden-lang">厨房家电检修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/6.jpg" alt="Commercial dryer repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Commercial Dryer Repair</strong>
+                  <strong class="lang-zh hidden-lang">商业烘干机维修</strong>
+                  <span class="lang-en">Commercial laundry support</span>
+                  <span class="lang-zh hidden-lang">商用洗衣设备支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/3.jpg" alt="TV repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">TV Repair</strong>
+                  <strong class="lang-zh hidden-lang">电视维修</strong>
+                  <span class="lang-en">Electronics service</span>
+                  <span class="lang-zh hidden-lang">电子设备检修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/7.jpg" alt="Refrigerator service work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Fridge Service</strong>
+                  <strong class="lang-zh hidden-lang">冰箱服务</strong>
+                  <span class="lang-en">Cooling system support</span>
+                  <span class="lang-zh hidden-lang">制冷系统支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/8.jpg" alt="Commercial display cabinet repair" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Display Cabinet Repair</strong>
+                  <strong class="lang-zh hidden-lang">展示冷柜维修</strong>
+                  <span class="lang-en">Retail refrigeration</span>
+                  <span class="lang-zh hidden-lang">零售冷藏设备</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/10.jpg" alt="Gas stove repair work" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Gas Stove Repair</strong>
+                  <strong class="lang-zh hidden-lang">燃气灶维修</strong>
+                  <span class="lang-en">Ignition and heat support</span>
+                  <span class="lang-zh hidden-lang">点火与火力问题处理</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="images/qx.jpg" alt="Appliance cleaning service" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Appliance Cleaning</strong>
+                  <strong class="lang-zh hidden-lang">家电清洗</strong>
+                  <span class="lang-en">Maintenance and hygiene care</span>
+                  <span class="lang-zh hidden-lang">保养与清洁服务</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/9.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioner Installation</strong>
+                  <strong class="lang-zh hidden-lang">空调安装</strong>
+                  <span class="lang-en">Residential setup</span>
+                  <span class="lang-zh hidden-lang">住宅安装案例</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/5.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioning Service</strong>
+                  <strong class="lang-zh hidden-lang">空调检修</strong>
+                  <span class="lang-en">Outdoor unit diagnosis</span>
+                  <span class="lang-zh hidden-lang">外机检测与维护</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/12.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Equipment Installation</strong>
+                  <strong class="lang-zh hidden-lang">设备吊装安装</strong>
+                  <span class="lang-en">Commercial site support</span>
+                  <span class="lang-zh hidden-lang">商用现场支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/11.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Air Conditioner Repair</strong>
+                  <strong class="lang-zh hidden-lang">空调维修</strong>
+                  <span class="lang-en">Cooling issue diagnosis</span>
+                  <span class="lang-zh hidden-lang">制冷问题排查</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/gree.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Commercial Refrigeration</strong>
+                  <strong class="lang-zh hidden-lang">商用制冷服务</strong>
+                  <span class="lang-en">Shop cooling support</span>
+                  <span class="lang-zh hidden-lang">门店制冷设备支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/2.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Refrigerator Repair</strong>
+                  <strong class="lang-zh hidden-lang">冰箱维修</strong>
+                  <span class="lang-en">Domestic appliance service</span>
+                  <span class="lang-zh hidden-lang">家用设备维修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/4.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Dishwasher Repair</strong>
+                  <strong class="lang-zh hidden-lang">洗碗机维修</strong>
+                  <span class="lang-en">Kitchen appliance support</span>
+                  <span class="lang-zh hidden-lang">厨房家电检修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/6.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Commercial Dryer Repair</strong>
+                  <strong class="lang-zh hidden-lang">商业烘干机维修</strong>
+                  <span class="lang-en">Commercial laundry support</span>
+                  <span class="lang-zh hidden-lang">商用洗衣设备支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/3.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">TV Repair</strong>
+                  <strong class="lang-zh hidden-lang">电视维修</strong>
+                  <span class="lang-en">Electronics service</span>
+                  <span class="lang-zh hidden-lang">电子设备检修</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/7.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Fridge Service</strong>
+                  <strong class="lang-zh hidden-lang">冰箱服务</strong>
+                  <span class="lang-en">Cooling system support</span>
+                  <span class="lang-zh hidden-lang">制冷系统支持</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/8.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Display Cabinet Repair</strong>
+                  <strong class="lang-zh hidden-lang">展示冷柜维修</strong>
+                  <span class="lang-en">Retail refrigeration</span>
+                  <span class="lang-zh hidden-lang">零售冷藏设备</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/10.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Gas Stove Repair</strong>
+                  <strong class="lang-zh hidden-lang">燃气灶维修</strong>
+                  <span class="lang-en">Ignition and heat support</span>
+                  <span class="lang-zh hidden-lang">点火与火力问题处理</span>
+                </figcaption>
+              </figure>
+              <figure class="gallery-item" aria-hidden="true">
+                <img src="images/qx.jpg" alt="" loading="lazy" />
+                <figcaption class="gallery-caption">
+                  <strong class="lang-en">Appliance Cleaning</strong>
+                  <strong class="lang-zh hidden-lang">家电清洗</strong>
+                  <span class="lang-en">Maintenance and hygiene care</span>
+                  <span class="lang-zh hidden-lang">保养与清洁服务</span>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
