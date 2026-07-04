@@ -673,12 +673,12 @@
       display: flex;
       gap: 0.25rem;
       width: max-content;
-      animation: gallery-scroll 62s linear infinite;
+      transform: translate3d(0, 0, 0);
       will-change: transform;
     }
 
-    .gallery-marquee:hover .gallery-track {
-      animation-play-state: paused;
+    .gallery-marquee.is-paused .gallery-track {
+      will-change: auto;
     }
 
     .gallery-item {
@@ -692,6 +692,7 @@
     }
 
     .gallery-item img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -720,23 +721,13 @@
       font-size: 0.92rem;
     }
 
-    @keyframes gallery-scroll {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(calc(-50% - 0.125rem));
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .gallery-marquee {
         overflow-x: auto;
       }
 
       .gallery-track {
-        animation: none;
+        transform: none !important;
       }
 
       .gallery-item[aria-hidden="true"] {
@@ -1445,7 +1436,7 @@
           <div class="gallery-marquee" aria-label="Recent work gallery">
             <div class="gallery-track">
               <figure class="gallery-item">
-                <img src="images/9.jpg" alt="Air conditioner installation" loading="lazy" />
+                <img src="images/9.jpg" alt="Air conditioner installation" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Air Conditioner Installation</strong>
                   <strong class="lang-zh hidden-lang">空调安装</strong>
@@ -1454,7 +1445,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/5.jpg" alt="Air conditioning service close-up" loading="lazy" />
+                <img src="images/5.jpg" alt="Air conditioning service close-up" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Air Conditioning Service</strong>
                   <strong class="lang-zh hidden-lang">空调检修</strong>
@@ -1463,7 +1454,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/gree.jpg" alt="Commercial refrigeration service work" loading="lazy" />
+                <img src="images/gree.jpg" alt="Commercial refrigeration service work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Commercial Refrigeration</strong>
                   <strong class="lang-zh hidden-lang">商用制冷服务</strong>
@@ -1472,7 +1463,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/2.jpg" alt="Refrigerator repair work" loading="lazy" />
+                <img src="images/2.jpg" alt="Refrigerator repair work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Refrigerator Repair</strong>
                   <strong class="lang-zh hidden-lang">冰箱维修</strong>
@@ -1481,7 +1472,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/4.jpg" alt="Dishwasher repair work" loading="lazy" />
+                <img src="images/4.jpg" alt="Dishwasher repair work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Dishwasher Repair</strong>
                   <strong class="lang-zh hidden-lang">洗碗机维修</strong>
@@ -1490,7 +1481,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/6.jpg" alt="Commercial dryer repair work" loading="lazy" />
+                <img src="images/6.jpg" alt="Commercial dryer repair work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Commercial Dryer Repair</strong>
                   <strong class="lang-zh hidden-lang">商业烘干机维修</strong>
@@ -1499,7 +1490,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/3.jpg" alt="TV repair work" loading="lazy" />
+                <img src="images/3.jpg" alt="TV repair work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">TV Repair</strong>
                   <strong class="lang-zh hidden-lang">电视维修</strong>
@@ -1508,7 +1499,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/7.jpg" alt="Refrigerator service work" loading="lazy" />
+                <img src="images/7.jpg" alt="Refrigerator service work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Fridge Service</strong>
                   <strong class="lang-zh hidden-lang">冰箱服务</strong>
@@ -1517,7 +1508,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/10.jpg" alt="Gas stove repair work" loading="lazy" />
+                <img src="images/10.jpg" alt="Gas stove repair work" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Gas Stove Repair</strong>
                   <strong class="lang-zh hidden-lang">燃气灶维修</strong>
@@ -1526,7 +1517,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item">
-                <img src="images/qx.jpg" alt="Appliance cleaning service" loading="lazy" />
+                <img src="images/qx.jpg" alt="Appliance cleaning service" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Appliance Cleaning</strong>
                   <strong class="lang-zh hidden-lang">家电清洗</strong>
@@ -1535,7 +1526,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/9.jpg" alt="" loading="lazy" />
+                <img src="images/9.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Air Conditioner Installation</strong>
                   <strong class="lang-zh hidden-lang">空调安装</strong>
@@ -1544,7 +1535,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/5.jpg" alt="" loading="lazy" />
+                <img src="images/5.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Air Conditioning Service</strong>
                   <strong class="lang-zh hidden-lang">空调检修</strong>
@@ -1553,7 +1544,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/gree.jpg" alt="" loading="lazy" />
+                <img src="images/gree.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Commercial Refrigeration</strong>
                   <strong class="lang-zh hidden-lang">商用制冷服务</strong>
@@ -1562,7 +1553,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/2.jpg" alt="" loading="lazy" />
+                <img src="images/2.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Refrigerator Repair</strong>
                   <strong class="lang-zh hidden-lang">冰箱维修</strong>
@@ -1571,7 +1562,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/4.jpg" alt="" loading="lazy" />
+                <img src="images/4.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Dishwasher Repair</strong>
                   <strong class="lang-zh hidden-lang">洗碗机维修</strong>
@@ -1580,7 +1571,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/6.jpg" alt="" loading="lazy" />
+                <img src="images/6.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Commercial Dryer Repair</strong>
                   <strong class="lang-zh hidden-lang">商业烘干机维修</strong>
@@ -1589,7 +1580,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/3.jpg" alt="" loading="lazy" />
+                <img src="images/3.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">TV Repair</strong>
                   <strong class="lang-zh hidden-lang">电视维修</strong>
@@ -1598,7 +1589,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/7.jpg" alt="" loading="lazy" />
+                <img src="images/7.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Fridge Service</strong>
                   <strong class="lang-zh hidden-lang">冰箱服务</strong>
@@ -1607,7 +1598,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/10.jpg" alt="" loading="lazy" />
+                <img src="images/10.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Gas Stove Repair</strong>
                   <strong class="lang-zh hidden-lang">燃气灶维修</strong>
@@ -1616,7 +1607,7 @@
                 </figcaption>
               </figure>
               <figure class="gallery-item" aria-hidden="true">
-                <img src="images/qx.jpg" alt="" loading="lazy" />
+                <img src="images/qx.jpg" alt="" loading="eager" decoding="async" />
                 <figcaption class="gallery-caption">
                   <strong class="lang-en">Appliance Cleaning</strong>
                   <strong class="lang-zh hidden-lang">家电清洗</strong>
@@ -2066,6 +2057,72 @@
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    const galleryMarquee = document.querySelector(".gallery-marquee");
+    const galleryTrack = document.querySelector(".gallery-track");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (galleryMarquee && galleryTrack && !prefersReducedMotion.matches) {
+      const originalItems = Array.from(galleryTrack.querySelectorAll(".gallery-item:not([aria-hidden='true'])"));
+      const gallerySpeed = 42;
+      let loopWidth = 0;
+      let offset = 0;
+      let lastTimestamp = 0;
+      let paused = false;
+
+      const measureGallery = () => {
+        const firstDuplicate = galleryTrack.querySelector(".gallery-item[aria-hidden='true']");
+        const lastOriginal = originalItems[originalItems.length - 1];
+        if (firstDuplicate) {
+          loopWidth = firstDuplicate.offsetLeft;
+        } else if (lastOriginal) {
+          loopWidth = lastOriginal.offsetLeft + lastOriginal.offsetWidth;
+        }
+        offset = loopWidth ? offset % loopWidth : 0;
+        galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      };
+
+      const animateGallery = (timestamp) => {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const delta = Math.min(timestamp - lastTimestamp, 80);
+        lastTimestamp = timestamp;
+
+        if (!paused && loopWidth > 0) {
+          offset = (offset + gallerySpeed * (delta / 1000)) % loopWidth;
+          galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        }
+
+        requestAnimationFrame(animateGallery);
+      };
+
+      galleryMarquee.addEventListener("mouseenter", () => {
+        paused = true;
+        galleryMarquee.classList.add("is-paused");
+      });
+
+      galleryMarquee.addEventListener("mouseleave", () => {
+        paused = false;
+        galleryMarquee.classList.remove("is-paused");
+        lastTimestamp = 0;
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        paused = document.hidden;
+        if (!paused) {
+          lastTimestamp = 0;
+          measureGallery();
+        }
+      });
+
+      window.addEventListener("resize", measureGallery);
+      window.addEventListener("pageshow", measureGallery);
+      galleryTrack.querySelectorAll("img").forEach((image) => {
+        image.addEventListener("load", measureGallery, { once: true });
+      });
+
+      measureGallery();
+      requestAnimationFrame(animateGallery);
+    }
 
     window.addEventListener("load", () => {
       loadingBar.style.width = "100%";
