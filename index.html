@@ -670,6 +670,44 @@
       background: linear-gradient(270deg, var(--surface), transparent);
     }
 
+    .gallery-control {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(17, 17, 17, 0.78);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(17, 17, 17, 0.18);
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background var(--transition), transform var(--transition), opacity var(--transition);
+    }
+
+    .gallery-control:hover,
+    .gallery-control:focus-visible {
+      background: var(--brand);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .gallery-control:focus-visible {
+      outline: 3px solid rgba(227, 29, 59, 0.24);
+      outline-offset: 3px;
+    }
+
+    .gallery-control.prev {
+      left: 0.65rem;
+    }
+
+    .gallery-control.next {
+      right: 0.65rem;
+    }
+
     .gallery-track {
       display: flex;
       gap: 0.25rem;
@@ -1126,6 +1164,19 @@
         width: 24px;
       }
 
+      .gallery-control {
+        width: 38px;
+        height: 38px;
+      }
+
+      .gallery-control.prev {
+        left: 0.45rem;
+      }
+
+      .gallery-control.next {
+        right: 0.45rem;
+      }
+
       .gallery-item {
         flex-basis: 220px;
       }
@@ -1435,6 +1486,12 @@
           </div>
 
           <div class="gallery-marquee" aria-label="Recent work gallery">
+            <button class="gallery-control prev" type="button" aria-label="Show previous work">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="gallery-control next" type="button" aria-label="Show next work">
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
             <div class="gallery-track">
               <figure class="gallery-item">
                 <img src="images/9.jpg" alt="Air conditioner installation" loading="eager" decoding="async" />
@@ -2061,15 +2118,28 @@
 
     const galleryMarquee = document.querySelector(".gallery-marquee");
     const galleryTrack = document.querySelector(".gallery-track");
+    const galleryPrevious = document.querySelector(".gallery-control.prev");
+    const galleryNext = document.querySelector(".gallery-control.next");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    if (galleryMarquee && galleryTrack && !prefersReducedMotion.matches) {
+    if (galleryMarquee && galleryTrack) {
       const originalItems = Array.from(galleryTrack.querySelectorAll(".gallery-item:not([aria-hidden='true'])"));
       const gallerySpeed = 68;
       let loopWidth = 0;
       let offset = 0;
       let lastTimestamp = 0;
-      let paused = false;
+      let userPaused = false;
+      let documentPaused = false;
+      let manualPauseTimer;
+
+      const renderGallery = () => {
+        galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      };
+
+      const normalizeGalleryOffset = () => {
+        if (!loopWidth) return;
+        offset = ((offset % loopWidth) + loopWidth) % loopWidth;
+      };
 
       const measureGallery = () => {
         const firstDuplicate = galleryTrack.querySelector(".gallery-item[aria-hidden='true']");
@@ -2079,8 +2149,36 @@
         } else if (lastOriginal) {
           loopWidth = lastOriginal.offsetLeft + lastOriginal.offsetWidth;
         }
-        offset = loopWidth ? offset % loopWidth : 0;
-        galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        normalizeGalleryOffset();
+        renderGallery();
+      };
+
+      const pauseGalleryTemporarily = () => {
+        userPaused = true;
+        galleryMarquee.classList.add("is-paused");
+        clearTimeout(manualPauseTimer);
+        manualPauseTimer = setTimeout(() => {
+          userPaused = false;
+          galleryMarquee.classList.remove("is-paused");
+          lastTimestamp = 0;
+        }, 2500);
+      };
+
+      const getGalleryStep = () => {
+        const firstItem = originalItems[0];
+        const secondItem = originalItems[1];
+        if (firstItem && secondItem) {
+          return secondItem.offsetLeft - firstItem.offsetLeft;
+        }
+        return firstItem ? firstItem.offsetWidth : 240;
+      };
+
+      const moveGalleryByStep = (direction) => {
+        measureGallery();
+        offset += getGalleryStep() * direction;
+        normalizeGalleryOffset();
+        renderGallery();
+        pauseGalleryTemporarily();
       };
 
       const animateGallery = (timestamp) => {
@@ -2088,28 +2186,31 @@
         const delta = Math.min(timestamp - lastTimestamp, 80);
         lastTimestamp = timestamp;
 
-        if (!paused && loopWidth > 0) {
+        if (!prefersReducedMotion.matches && !userPaused && !documentPaused && loopWidth > 0) {
           offset = (offset + gallerySpeed * (delta / 1000)) % loopWidth;
-          galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+          renderGallery();
         }
 
         requestAnimationFrame(animateGallery);
       };
 
       galleryMarquee.addEventListener("mouseenter", () => {
-        paused = true;
+        userPaused = true;
         galleryMarquee.classList.add("is-paused");
       });
 
       galleryMarquee.addEventListener("mouseleave", () => {
-        paused = false;
+        userPaused = false;
         galleryMarquee.classList.remove("is-paused");
         lastTimestamp = 0;
       });
 
+      galleryPrevious?.addEventListener("click", () => moveGalleryByStep(-1));
+      galleryNext?.addEventListener("click", () => moveGalleryByStep(1));
+
       document.addEventListener("visibilitychange", () => {
-        paused = document.hidden;
-        if (!paused) {
+        documentPaused = document.hidden;
+        if (!documentPaused) {
           lastTimestamp = 0;
           measureGallery();
         }
