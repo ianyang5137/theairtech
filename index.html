@@ -716,6 +716,10 @@
       will-change: transform;
     }
 
+    .gallery-track.is-stepping {
+      transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
     .gallery-marquee.is-paused .gallery-track {
       will-change: auto;
     }
@@ -2131,6 +2135,7 @@
       let userPaused = false;
       let documentPaused = false;
       let manualPauseTimer;
+      let stepTransitionTimer;
 
       const renderGallery = () => {
         galleryTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
@@ -2175,9 +2180,16 @@
 
       const moveGalleryByStep = (direction) => {
         measureGallery();
+        userPaused = true;
+        galleryMarquee.classList.add("is-paused");
+        galleryTrack.classList.add("is-stepping");
         offset += getGalleryStep() * direction;
         normalizeGalleryOffset();
         renderGallery();
+        clearTimeout(stepTransitionTimer);
+        stepTransitionTimer = setTimeout(() => {
+          galleryTrack.classList.remove("is-stepping");
+        }, 460);
         pauseGalleryTemporarily();
       };
 
